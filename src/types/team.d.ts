@@ -3,4 +3,5 @@ export interface Team {
   name: string
   logo: string
   serie: string
+  team_stats_id: number
 }
