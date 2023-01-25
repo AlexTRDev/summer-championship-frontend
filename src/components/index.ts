@@ -1,7 +1,6 @@
 export * from './Cards'
 export * from './Forms'
 export * from './Logos'
-export * from './Modal'
 export * from './Navbars/NavbarApp'
 export * from './Navbars/StatsNav'
 export * from './Placeholder'
