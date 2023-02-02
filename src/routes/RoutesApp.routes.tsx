@@ -1,13 +1,15 @@
-import { Route, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
+import { createBrowserRouter, createRoutesFromElements, Route } from 'react-router-dom'
 import { Asistaints, Classification, MVP, Scorers } from '../components'
-import { CalendarLayout, EquiposLayout, LayoutApp, StatsLayout } from '../layouts'
+import { CalendarLayout, EquiposLayout, LayoutApp, PlayersLayout, StatsLayout } from '../layouts'
 
 import ProtectedRoutes from './ProtectedRoutes.routes'
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<LayoutApp />}>
-      <Route path="Equipos" element={<EquiposLayout />} />
+      <Route path="Equipos" element={<EquiposLayout />}>
+        <Route path=":teamId" element={<PlayersLayout />} />
+      </Route>
       <Route path="Calendario" element={<CalendarLayout />} />
       <Route path="Estadisticas" element={<StatsLayout />}>
         <Route path="clasificacion" element={<Classification />} />
