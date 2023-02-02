@@ -1,5 +1,5 @@
 import React from 'react'
-import { imgTeam } from '../../../assets/img/index'
+import defaultLogo from '../../../assets/img/team_logo_default.png'
 
 export interface MVPInterface {}
 
@@ -24,7 +24,7 @@ const MVP: React.FC<MVPInterface> = () => {
         <tr className="even:bg-white odd:bg-slate-200">
           <td className="p-2 text-center">1</td>
           <td className="p-2 text-start flex flex-row items-start ">
-            <img src={imgTeam} className="w-8" alt="Team 1" width={30} />
+            <img src={defaultLogo} className="w-8" alt="Team 1" width={30} />
             <span className="text-lg">Team 1</span>
           </td>
           <td className="p-2 text-center">3</td>
@@ -39,7 +39,7 @@ const MVP: React.FC<MVPInterface> = () => {
         <tr className="even:bg-white odd:bg-slate-200">
           <td className="p-2 text-center">2</td>
           <td className="p-2 text-start flex flex-row items-start ">
-            <img src={imgTeam} className="w-8" alt="Team 2" width={30} />
+            <img src={defaultLogo} className="w-8" alt="Team 2" width={30} />
             <span className="text-lg">Team 1</span>
           </td>
           <td className="p-2 text-center">3</td>
@@ -54,7 +54,7 @@ const MVP: React.FC<MVPInterface> = () => {
         <tr className="even:bg-white odd:bg-slate-200">
           <td className="p-2 text-center">2</td>
           <td className="p-2 text-start flex flex-row items-start ">
-            <img src={imgTeam} className="w-8" alt="Team 2" width={30} />
+            <img src={defaultLogo} className="w-8" alt="Team 2" width={30} />
             <span className="text-lg">Team 1</span>
           </td>
           <td className="p-2 text-center">3</td>
