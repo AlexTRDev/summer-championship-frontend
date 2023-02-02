@@ -1,32 +1,33 @@
-import { Team } from '../../types/team'
+import { IResponseTeam, IResponseTeams } from '../../types/response'
+import { ITeam } from '../../types/team'
 import { apiSlice } from '../api'
 
 const teamAPI = apiSlice.injectEndpoints({
   endpoints: build => ({
-    findAllTeams: build.query<Team[], void>({
-      query: () => 'teams',
-    }),
-    findTeam: build.query<Team, number>({
-      query: id => `teams/${id}`,
-    }),
-    createTeam: build.mutation<Team, Team>({
+    createTeam: build.mutation<ITeam, ITeam>({
       query: body => ({
         url: 'teams',
         method: 'POST',
         body,
       }),
     }),
-    updateTeam: build.mutation<Team, Team>({
-      query: body => ({
-        url: `teams`,
-        method: 'PUT',
-        body,
-      }),
+    getTeam: build.query<IResponseTeam, number>({
+      query: id => `teams/${id}`,
+    }),
+    getTeams: build.query<IResponseTeams, void>({
+      query: () => 'teams',
     }),
     removeTeam: build.mutation<number, boolean>({
       query: id => ({
         url: `teams/${id}`,
         method: 'DELETE',
+      }),
+    }),
+    updateTeam: build.mutation<ITeam, ITeam>({
+      query: ({ id, ...body }) => ({
+        url: `teams/${id}`,
+        method: 'PUT',
+        body,
       }),
     }),
   }),
@@ -35,8 +36,8 @@ const teamAPI = apiSlice.injectEndpoints({
 
 export const {
   useCreateTeamMutation,
-  useFindAllTeamsQuery,
-  useFindTeamQuery,
+  useGetTeamQuery,
+  useGetTeamsQuery,
   useRemoveTeamMutation,
   useUpdateTeamMutation,
 } = teamAPI
