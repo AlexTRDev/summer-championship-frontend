@@ -1,5 +1,6 @@
 export { default as CalendarLayout } from './CalendarLayout'
 export { default as EquiposLayout } from './EquiposLayout'
 export { default as LayoutApp } from './LayoutApp'
+export { default as PlayersLayout } from './PlayersLayout'
 export { default as StatsLayout } from './StatsLayout'
 export * from './index'
