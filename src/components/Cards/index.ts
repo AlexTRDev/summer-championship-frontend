@@ -1,1 +1,3 @@
-export { default as Cards } from './TeamCard'
+export * from './Player'
+export { default as TeamCard } from './TeamCard'
+export * from './index'
