@@ -66,22 +66,25 @@ const Classification: React.FC<ClassificationInterface> = () => {
               i
             ) => {
               return (
-                <tr className="even:bg-white odd:bg-slate-200" key={crypto.randomUUID()}>
-                  <td className="p-2 text-center">{i + 1}</td>
-                  <td className="p-2 text-start flex flex-row items-start gap-4">
-                    <TeamLogoDefault />
-                    <span className="text-base">{team?.name}</span>
+                <tr
+                  className="bg-gradient-to-r even:from-cornflower-blue-600 even:to-cornflower-blue-400 odd:from-radical-red-600 odd:to-radical-red-400 text-white  hover:from-black/90 hover:to-black/90"
+                  key={crypto.randomUUID()}
+                >
+                  <td className=" text-center">{i + 1}</td>
+                  <td className="flex flex-row flex-wrap items-center justify-start content-center gap-x-2">
+                    <TeamLogoDefault tailwind="fill-white w-[25px]" />
+                    <span className=" text-base ">{team?.name}</span>
                   </td>
-                  <td className="text-center">{gamesPlayed}</td>
-                  <td className="text-center">{macthesWon}</td>
-                  <td className="text-center">{matchesTied}</td>
-                  <td className="text-center">{matchesLost}</td>
-                  <td className="text-center">{goalsFor}</td>
-                  <td className="text-center">{goalsAgainst}</td>
-                  <td className="text-center">{goalDifference}</td>
-                  <td className="text-center">{yellowCards}</td>
-                  <td className="text-center">{redCards}</td>
-                  <td className="text-center">{points}</td>
+                  <td className=" text-center">{gamesPlayed}</td>
+                  <td className=" text-center">{macthesWon}</td>
+                  <td className=" text-center">{matchesTied}</td>
+                  <td className=" text-center">{matchesLost}</td>
+                  <td className=" text-center">{goalsFor}</td>
+                  <td className=" text-center">{goalsAgainst}</td>
+                  <td className=" text-center">{goalDifference}</td>
+                  <td className=" text-center">{yellowCards}</td>
+                  <td className=" text-center">{redCards}</td>
+                  <td className=" text-center">{points}</td>
                 </tr>
               )
             }
