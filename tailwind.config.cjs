@@ -4,6 +4,9 @@ module.exports = {
   content: ['./index.html', './src/**/*.{html,js,ts,jsx,tsx}'],
   theme: {
     extend: {
+      spacing: {
+        'full-cell': 'calc(100vh - 64px)',
+      },
       dropShadow: {
         sombra: '5px 5px 10px rgba(255,255,255,.5)',
       },
@@ -16,6 +19,8 @@ module.exports = {
         linear4: 'linear-gradient(220.55deg, #998416 0%, #daa520 100%)',
         linear5: 'linear-gradient(220.55deg, #834e99 0%, #da70d6 100%)',
         linear6: 'linear-gradient(220.55deg, #adff2f 0%, #84b321 100%)',
+        'player-basic': 'url("assets/img/playerBasic.png")',
+        'player-pro': 'url("assets/img/playerPro.png")',
       },
       colors: {
         color1: '#6495ed',
