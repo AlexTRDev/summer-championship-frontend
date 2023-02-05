@@ -1,7 +1,7 @@
 import { useParams } from 'react-router'
 import { useGetTeamQuery } from '../app'
 import { TeamLogoDefault } from '../assets'
-import { Player } from '../components'
+import { PlayerPro } from '../components'
 import { colors, fills, gradients } from '../utils'
 
 function PlayersLayout() {
@@ -15,22 +15,24 @@ function PlayersLayout() {
   if (error) return <h1>Error en la petición</h1>
 
   return (
-    <div className={`${color} ${gradient} p-4 relative `}>
-      <div className="w-full flex items-center justify-start gap-4 p-4">
+    <div className={`${color} ${gradient} p-4 relative sm:min-h-screen`}>
+      <h1 className="text-2xl font-medium p-2 sm:hidden text-white">Jugadores</h1>
+
+      <div className="w-full flex flex-wrap items-center justify-center gap-2">
         {data?.team?.image ? (
           <img src={data?.team?.image} alt={'Team Logo'} />
         ) : (
-          <TeamLogoDefault tailwind={`fill-white w-[100px] h-[100px] pl-2 z-10`} />
+          <TeamLogoDefault tailwind={`fill-white sm:w-[100px] sm:h-[100px] pl-2 z-10`} />
         )}
-        <h1 className="text-white font-black text-5xl z-10">{data?.team.name}</h1>
+        <h1 className="text-white text-center font-black text-xl sm:text-5xl z-10">{data?.team.name}</h1>
         <TeamLogoDefault
-          tailwind={`${fill} absolute w-screen h-screen top-[50%] left-[50%]  translate-x-[-50%] translate-y-[-50%] `}
+          tailwind={`${fill} absolute w-full h-full top-[50%] left-[50%]  translate-x-[-50%] translate-y-[-50%] `}
         />
       </div>
 
-      <div className="flex flex-row flex-wrap items-center justify-center gap-16 mt-16">
+      <div className="flex flex-row flex-wrap items-center justify-center gap-16 mt-10">
         {data?.team.players?.map(player => (
-          <Player key={crypto.randomUUID()} player={player} />
+          <PlayerPro key={crypto.randomUUID()} player={player} />
         ))}
       </div>
     </div>
