@@ -1,7 +1,7 @@
 .card {
   position: relative;
   width: 350px;
-  height: 190px;
+  height: 200px;
   background: linear-gradient(220.55deg, #565656 0%, #181818 100%);
   transition: 0.5s;
 }
@@ -122,86 +122,38 @@
 }
 
 .card .cont .details {
-  padding: 40px;
+  padding: 65px;
   text-align: center;
   width: 100%;
   transition: 0.5s;
-  transform: translateY(100px);
+  transform: translateY(120px);
+  margin-bottom: 10px;
 }
 
 .card:hover .cont .details {
-  transform: translateY(30px);
+  transform: translateY(70px);
 }
 
 .card .cont .details h2 {
   font-size: 1.25em;
-  font-weight: 600;
-  color: #ffbd00;
   line-height: 1.2em;
 }
 
 .card .cont .details h2 span {
   font-size: 1.35em;
-  font-weight: bold;
-  color: #fff;
 }
 
 .card .cont .details .data {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   margin: 20px 0;
 }
 
 .card .cont .details .data h3 {
   font-size: 1em;
-  color: #ffbd00;
   line-height: 1.2em;
-  font-weight: 600;
 }
 
 .card .cont .details .data h3 span {
   font-size: 0.85em;
-  font-weight: 400;
-  color: #fff;
-}
-
-.card .cont .details .botons {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-}
-
-.card .cont .details .botons button {
-  padding: 10px 30px;
-  border: none;
-  outline: none;
-  border-radius: 5px;
-  font-size: 1em;
-  font-weight: 500;
-  background: #ffbd00;
-  color: #f5e7b8;
-  cursor: pointer;
-  opacity: 0.9;
-}
-
-.card .cont .details .botons button:nth-child(2) {
-  background: #fff;
-  color: #ffbd00;
-}
-
-.card .cont .details .botons button:hover {
-  opacity: 1;
-}
-
-.col {
-  color: #6495ed;
-  color: #467fa6;
-  color: #e8175b;
-  color: #ff3c7b;
-  color: #565656;
-  color: #767676;
-  color: #998416;
-  color: #daa520;
-  color: #834e99;
-  color: #da70d6;
 }
