@@ -1,48 +1,48 @@
 import React from 'react'
 import perfil from '../../../assets/img/Alex_wsp.jpeg'
-import { IPlayer } from '../../../types/person'
+import { Social } from '../../Social'
 import './styles/Player.css'
 
-export interface PlayerInterface {
-  player: IPlayer
-}
+export interface PlayerInterface {}
 
-const Player: React.FC<PlayerInterface> = ({ player: { lastName, name, images, playerStats } }) => {
+const Player: React.FC<PlayerInterface> = () => {
   return (
-    <div className="card">
-      <div className="lines"></div>
-      <div className="imgBox">
-        <img src={images?.[0]?.url ?? perfil} />
-      </div>
-      <div className="cont">
-        <div className="details">
-          <h2>
-            {name} <br /> <span>{lastName}</span>
-          </h2>
-          <div className="data">
-            <h3>
-              {playerStats?.[0].gamesPlayed}
-              <br />
-              <span>Partidos jugados</span>
-            </h3>
-            <h3>
-              {playerStats?.[0].goalsScored}
-              <br />
-              <span>Goles</span>
-            </h3>
-            <h3>
-              {playerStats?.[0].numberAsists}
-              <br />
-              <span>Asistencias</span>
-            </h3>
+    <section className="h-full-cell  bg-gray-200">
+      <h1 className="text-2xl font-medium pt-2 pl-2 sm:hidden text-gray-500">Sobre mi</h1>
+      <div className="grid place-content-center pt-20">
+        <div className="card">
+          <div className="lines"></div>
+          <div className="imgBox">
+            <img src={perfil} />
           </div>
-          <div className=" hidden">
-            <button>Follow</button>
-            <button>Message</button>
+          <div className="cont ">
+            <div className="details">
+              <h2 className="font-semibold text-white">
+                Alex <br /> <span>Terrones Rivera</span>
+              </h2>
+              <div className="data">
+                <h3 className="text-center text-blue-500 font-medium">
+                  Developer
+                  <span className=""> & </span>
+                  Designer
+                </h3>
+              </div>
+              <Social />
+            </div>
           </div>
         </div>
       </div>
-    </div>
+      <div className="flex flex-col items-center p-10">
+        <h2 className="text-2xl font-bold text-blue-500">Full Stack Developer y Diseñador UX/UI</h2>
+        <p className="text-gray-500">
+          Experto en el desarrollo de aplicaciones de escritorio, web y móviles utilizando tecnologías modernas, asi
+          mismo en el diseño y creación de experiencias de usuario intuitivas y atractivas.
+        </p>
+        <div className="flex items-center mt-10">
+          <div className="w-10 h-10 bg-blue-500 rounded-full"></div>
+        </div>
+      </div>
+    </section>
   )
 }
 
