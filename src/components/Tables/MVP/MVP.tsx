@@ -5,69 +5,30 @@ export interface MVPInterface {}
 
 const MVP: React.FC<MVPInterface> = () => {
   return (
-    <table className="table-auto w-full ">
-      <thead className="bg-black">
-        <tr className="text-white">
-          <th className="text-center">Pos</th>
-          <th className="text-start">Equipo</th>
-          <th className="text-center">PG</th>
-          <th className="text-center">PP</th>
-          <th className="text-center">PE</th>
-          <th className="text-center">GF</th>
-          <th className="text-center">GC</th>
-          <th className="text-center">TA</th>
-          <th className="text-center">TR</th>
-          <th className="text-center">Pts</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr className="even:bg-white odd:bg-slate-200">
-          <td className="p-2 text-center">1</td>
-          <td className="p-2 text-start flex flex-row items-start ">
-            <img src={defaultLogo} className="w-8" alt="Team 1" width={30} />
-            <span className="text-lg">Team 1</span>
-          </td>
-          <td className="p-2 text-center">3</td>
-          <td className="p-2 text-center">0</td>
-          <td className="p-2 text-center">0</td>
-          <td className="p-2 text-center">9</td>
-          <td className="p-2 text-center">3</td>
-          <td className="p-2 text-center">+6</td>
-          <td className="p-2 text-center">3</td>
-          <td className="p-2 text-center">9</td>
-        </tr>
-        <tr className="even:bg-white odd:bg-slate-200">
-          <td className="p-2 text-center">2</td>
-          <td className="p-2 text-start flex flex-row items-start ">
-            <img src={defaultLogo} className="w-8" alt="Team 2" width={30} />
-            <span className="text-lg">Team 1</span>
-          </td>
-          <td className="p-2 text-center">3</td>
-          <td className="p-2 text-center">0</td>
-          <td className="p-2 text-center">0</td>
-          <td className="p-2 text-center">9</td>
-          <td className="p-2 text-center">3</td>
-          <td className="p-2 text-center">+6</td>
-          <td className="p-2 text-center">3</td>
-          <td className="p-2 text-center">9</td>
-        </tr>
-        <tr className="even:bg-white odd:bg-slate-200">
-          <td className="p-2 text-center">2</td>
-          <td className="p-2 text-start flex flex-row items-start ">
-            <img src={defaultLogo} className="w-8" alt="Team 2" width={30} />
-            <span className="text-lg">Team 1</span>
-          </td>
-          <td className="p-2 text-center">3</td>
-          <td className="p-2 text-center">0</td>
-          <td className="p-2 text-center">0</td>
-          <td className="p-2 text-center">9</td>
-          <td className="p-2 text-center">3</td>
-          <td className="p-2 text-center">+6</td>
-          <td className="p-2 text-center">3</td>
-          <td className="p-2 text-center">9</td>
-        </tr>
-      </tbody>
-    </table>
+    <section className="p-2 w-full">
+      <table className="table-auto w-full ">
+        <thead className="text-gray-500 border-b">
+          <tr>
+            <th className="text-center hidden sm:table-cell">Ranking</th>
+            <th className="text-center sm:hidden">Rank</th>
+            <th className="text-start">Equipo</th>
+            <th className="text-center">Nombre</th>
+            <th className="text-center">Jornada</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr className="even:bg-slate-200">
+            <td className="text-center">1</td>
+            <td className=" text-start flex flex-row items-start ">
+              <img src={defaultLogo} className="w-8" alt="Team 1" width={30} />
+              <span className="text-lg">Team</span>
+            </td>
+            <td className=" text-center">Kun Agüero</td>
+            <td className=" text-center"> 2023-01-15</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
   )
 }
 
