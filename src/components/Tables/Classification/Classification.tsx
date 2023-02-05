@@ -18,8 +18,14 @@ const Classification: React.FC<ClassificationInterface> = () => {
   if (isError) return <h1>Error in the query...</h1>
 
   return (
-    <section className="flex flex-col w-full mx-2">
-      <select className="w-60" name="match" id="match_1" onChange={handleSelected} value={selected}>
+    <section className="flex flex-col w-full gap-2  p-2">
+      <select
+        className="w-44 text-gray-500 border rounded outline-gray-500"
+        name="match"
+        id="match_1"
+        onChange={handleSelected}
+        value={selected}
+      >
         <option value={'0'} disabled>
           --- Seleccione Serie ---{' '}
         </option>
@@ -30,11 +36,11 @@ const Classification: React.FC<ClassificationInterface> = () => {
         ))}
       </select>
 
-      <table className="table-auto w-full">
-        <thead className="bg-black">
-          <tr className="text-white">
+      <table className="table-auto sm:w-full ">
+        <thead>
+          <tr className="text-gray-500 border-b text-[10px] sm:text-base">
             <th className="text-center">Pos</th>
-            <th className="text-start w-[420px]">Equipo</th>
+            <th className="text-start ">Equipo</th>
             <th className="text-center">PJ</th>
             <th className="text-center">PG</th>
             <th className="text-center">PE</th>
@@ -67,13 +73,14 @@ const Classification: React.FC<ClassificationInterface> = () => {
             ) => {
               return (
                 <tr
-                  className="bg-gradient-to-r even:from-cornflower-blue-600 even:to-cornflower-blue-400 odd:from-radical-red-600 odd:to-radical-red-400 text-white  hover:from-black/90 hover:to-black/90"
+                  // className=" h-10 text-[10px] sm:text-base bg-gradient-to-r even:from-cornflower-blue-600/80 even:to-cornflower-blue-400/80 odd:from-radical-red-600/80 odd:to-radical-red-400/80 text-white  hover:from-black/90 hover:to-black/90"
+                  className=" h-10 text-[10px] sm:text-base even:bg-slate-200 text-gray-500  hover:from-black/90 hover:to-black/90"
                   key={crypto.randomUUID()}
                 >
-                  <td className=" text-center">{i + 1}</td>
-                  <td className="flex flex-row flex-wrap items-center justify-start content-center gap-x-2">
-                    <TeamLogoDefault tailwind="fill-white w-[25px]" />
-                    <span className=" text-base ">{team?.name}</span>
+                  <td className="text-center">{i + 1}</td>
+                  <td className="flex flex-row flex-wrap items-center h-10 sm:h-full sm:justify-start gap-x-1 sm:gap-x-2">
+                    <TeamLogoDefault tailwind="hidden sm:flex fill-gray-500 w-[25px]" />
+                    {team?.name}
                   </td>
                   <td className=" text-center">{gamesPlayed}</td>
                   <td className=" text-center">{macthesWon}</td>
