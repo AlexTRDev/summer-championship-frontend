@@ -1,5 +1,5 @@
 import React from 'react'
-import defaultLogo from '../../../assets/img/team_logo_default.png'
+// import defaultLogo from '../../../assets/img/team_logo_default.png'
 
 export interface MVPInterface {}
 
@@ -18,13 +18,13 @@ const MVP: React.FC<MVPInterface> = () => {
         </thead>
         <tbody>
           <tr className="even:bg-slate-200">
-            <td className="text-center">1</td>
+            {/* <td className="text-center">1</td>
             <td className=" text-start flex flex-row items-start ">
               <img src={defaultLogo} className="w-8" alt="Team 1" width={30} />
               <span className="text-lg">Team</span>
             </td>
             <td className=" text-center">Kun Agüero</td>
-            <td className=" text-center"> 2023-01-15</td>
+            <td className=" text-center"> 2023-01-15</td> */}
           </tr>
         </tbody>
       </table>
