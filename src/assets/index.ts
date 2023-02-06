@@ -1,1 +1,2 @@
-export * from './img'
+export * from './index'
+export * from './svg'
