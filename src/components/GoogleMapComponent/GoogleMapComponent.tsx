@@ -1,5 +1,6 @@
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api'
 import { memo, useCallback, useState } from 'react'
+import { Loader } from '../Loader'
 
 const API_KEY = import.meta.env.VITE_API_GOOGLE_API_KEY
 
@@ -41,7 +42,7 @@ const GoogleMapComponent = () => {
       <></>
     </GoogleMap>
   ) : (
-    <></>
+    <Loader />
   )
 }
 

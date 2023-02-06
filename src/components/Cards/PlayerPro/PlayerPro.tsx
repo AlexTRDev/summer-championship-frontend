@@ -2,6 +2,7 @@
 
 import { TeamLogoDefault } from '../../../assets'
 import { IPlayer } from '../../../types/person'
+import defaultImg from '../../../assets/img/KUN.png'
 
 export interface PlayerProInterface {
   player: IPlayer
@@ -19,8 +20,8 @@ const PlayerPro: React.FC<PlayerProInterface> = ({ player: { name, images, lastN
           // images?.[0].url ? 'w-16 ml-6 rounded-full mt-2 p-1 ' : 'brightness-0 drop-shadow-sombra w-16 ml-8'
           'brightness-0 drop-shadow-sombra w-16 ml-6 mt-2'
         } `}
-        // src={images?.[0].url ?? `https://kingsleague.pro/wp-content/uploads/2022/12/KUNSPORTS-KUN-AGUERO.png`}
-        src={`https://kingsleague.pro/wp-content/uploads/2022/12/KUNSPORTS-KUN-AGUERO.png`}
+        // src={images?.[0].url ?? ${defaultImg}}
+        src={defaultImg}
         alt="player placeholder"
       />
 
@@ -45,10 +46,10 @@ const PlayerPro: React.FC<PlayerProInterface> = ({ player: { name, images, lastN
           </div>
           <div className="pl-2">
             <p className="text-[10px] text-white">
-              TA <span>1</span>
+              TA <span>{playerStats?.[0].yellowCards}</span>
             </p>
             <p className="text-[10px] text-white">
-              TR <span>0</span>
+              TR <span>{playerStats?.[0].redCards}</span>
             </p>
           </div>
         </div>
