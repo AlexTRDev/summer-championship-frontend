@@ -1,0 +1,159 @@
+.card {
+  position: relative;
+  width: 350px;
+  height: 200px;
+  background: linear-gradient(220.55deg, #565656 0%, #181818 100%);
+  transition: 0.5s;
+}
+
+.card:hover {
+  height: 350px;
+}
+
+.card .lines {
+  position: absolute;
+  inset: 0;
+  background: #000;
+  overflow: hidden;
+}
+
+.card .lines::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 120px;
+  /* background: linear-gradient(transparent, #45f3ff, #45f3ff, #45f3ff, transparent); */
+  /* background: linear-gradient(transparent, #ffbd00, #fec202, #fdc704, transparent); */
+  /* background: linear-gradient(transparent, #1d70ec, #92ffc0, #1d70ec, transparent); */
+  background: linear-gradient(transparent, #ffbd00, #f5e7b8, #fdc704, transparent);
+  animation: luces 4s linear infinite;
+}
+
+@keyframes luces {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.card .lines::after {
+  content: '';
+  position: absolute;
+  inset: 5px;
+  background: linear-gradient(220.55deg, #565656 0%, #181818 100%);
+}
+
+.card .imgBox {
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translate(-50%);
+  background: #000;
+
+  width: 150px;
+  height: 150px;
+  z-index: 10;
+  overflow: hidden;
+  transition: 0.5s;
+}
+
+.card:hover .imgBox {
+  width: 250px;
+  height: 250px;
+}
+.card .imgBox::before {
+  content: '';
+  width: 500px;
+  height: 150px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* background: linear-gradient(transparent, #ff3c7b, #ff3c7b, #ff3c7b, transparent); */
+  /* background: linear-gradient(transparent, #ffbd00, #f5e7b8, #fdc704, transparent); */
+  background: linear-gradient(transparent, #1d70ec, #92ffc0, #1d70ec, transparent);
+  animation: luces2 2s linear infinite;
+}
+
+@keyframes luces2 {
+  0% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+}
+
+.card .imgBox::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  /* background: #292929; */
+  background: linear-gradient(220.55deg, #565656 0%, #181818 100%);
+}
+
+.card .imgBox img {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1;
+  width: calc(100% - 20px);
+  height: calc(100% - 20px);
+  filter: grayscale(1);
+}
+
+.card:hover .imgBox img {
+  filter: grayscale(0);
+}
+
+.card .cont {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.card .cont .details {
+  padding: 65px;
+  text-align: center;
+  width: 100%;
+  transition: 0.5s;
+  transform: translateY(120px);
+  margin-bottom: 10px;
+}
+
+.card:hover .cont .details {
+  transform: translateY(70px);
+}
+
+.card .cont .details h2 {
+  font-size: 1.25em;
+  line-height: 1.2em;
+}
+
+.card .cont .details h2 span {
+  font-size: 1.35em;
+}
+
+.card .cont .details .data {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.card .cont .details .data h3 {
+  font-size: 1em;
+  line-height: 1.2em;
+}
+
+.card .cont .details .data h3 span {
+  font-size: 0.85em;
+}
