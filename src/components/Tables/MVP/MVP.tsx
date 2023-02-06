@@ -5,7 +5,7 @@ export interface MVPInterface {}
 
 const MVP: React.FC<MVPInterface> = () => {
   return (
-    <section className="p-2 w-full">
+    <section className="p-2 w-full min-h-[200px]">
       <table className="table-auto w-full ">
         <thead className="text-gray-500 border-b">
           <tr>

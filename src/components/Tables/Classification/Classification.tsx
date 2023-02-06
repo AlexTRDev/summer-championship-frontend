@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useGetTeamStatsQuery } from '../../../app/actions/teamStats'
 import { TeamLogoDefault } from '../../../assets'
 import { SerieTeam } from '../../../types/enums'
+import { Loader } from '../../Loader'
 
 export interface ClassificationInterface {}
 
@@ -14,9 +15,8 @@ const Classification: React.FC<ClassificationInterface> = () => {
     setSelected(e.target.value)
   }
 
-  if (isLoading) return <h1>Loading...</h1>
-  if (isError) return <h1>Error in the query...</h1>
-
+  if (isLoading) return <Loader />
+  if (isError) return <h1 className="text-gray-500 text-xl font-medium">... Error en la petición ...</h1>
   return (
     <section className="flex flex-col w-full gap-2  p-2">
       <select

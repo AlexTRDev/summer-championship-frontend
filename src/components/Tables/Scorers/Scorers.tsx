@@ -1,6 +1,7 @@
 import React from 'react'
 import { useGetPlayerStatsQuery, useGetTeamsQuery } from '../../../app'
 import { TeamLogoDefault } from '../../../assets'
+import { Loader } from '../../Loader'
 
 export interface ScorersInterface {}
 
@@ -11,11 +12,11 @@ const Scorers: React.FC<ScorersInterface> = () => {
   })
   const { data: dataTeams, isLoading: isLoadingTeams } = useGetTeamsQuery()
 
-  if (isLoading && isLoadingTeams) return <h1>Loading...</h1>
-  if (isError) return <h1>Error in the query...</h1>
+  if (isLoading && isLoadingTeams) return <Loader />
+  if (isError) return <h1 className="text-gray-500 text-xl font-medium">... Error en la petición ...</h1>
 
   return (
-    <section className="p-2 w-full">
+    <section className="p-2 w-full min-h-[200px]">
       <table className="table-auto w-full">
         <thead className="text-gray-500 border-b">
           <tr className="">
