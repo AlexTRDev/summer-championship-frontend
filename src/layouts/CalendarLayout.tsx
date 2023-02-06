@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useGetJourneysQuery, useGetCalendarsQuery } from '../app'
 import { TeamLogoDefault } from '../assets'
+import { Loader } from '../components'
 
 function CalendarLayout() {
   const [selectDay, setSelectDay] = useState(1)
@@ -15,11 +16,11 @@ function CalendarLayout() {
     setSelectDay(Number(e.target.value))
   }
 
-  if (calendarsAPI.isLoading || dayAPI.isLoading) return <h1>Loading...</h1>
-  if (calendarsAPI.error || dayAPI.isError) return <h1>Error en la petición</h1>
+  if (calendarsAPI.isLoading || dayAPI.isLoading) return <Loader />
+  if (calendarsAPI.error || dayAPI.isError)
+    return <h1 className="text-gray-500 text-xl font-medium">... Error en la petición ...</h1>
   return (
     <>
-      {/* <Match teams={teamAPI.data ?? []} /> */}
       <div>
         <h1 className="text-2xl font-medium pt-2 pl-2 sm:hidden text-gray-500">Calendario</h1>
 

@@ -1,7 +1,7 @@
 import { useParams } from 'react-router'
 import { useGetTeamQuery } from '../app'
 import { TeamLogoDefault } from '../assets'
-import { PlayerPro } from '../components'
+import { Loader, PlayerPro } from '../components'
 import { colors, fills, gradients } from '../utils'
 
 function PlayersLayout() {
@@ -11,8 +11,8 @@ function PlayersLayout() {
   const fill = fills[(Number(teamId) - 1) % 6]
   const color = colors[(Number(teamId) - 1) % 6]
   const gradient = gradients[(Number(teamId) - 1) % 6]
-  if (isLoading) return <h1>Loading...</h1>
-  if (error) return <h1>Error en la petición</h1>
+  if (isLoading) return <Loader />
+  if (error) return <h1 className="text-gray-500 text-xl font-medium">... Error en la petición ...</h1>
 
   return (
     <div className={`${color} ${gradient} p-4 relative sm:min-h-screen`}>

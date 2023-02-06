@@ -1,12 +1,13 @@
 import { Outlet } from 'react-router'
 import { useGetTeamsQuery } from '../app'
+import { Loader } from '../components'
 import TeamCard from '../components/Cards/TeamCard'
 
 function EquiposLayout() {
   const { data, error, isLoading } = useGetTeamsQuery()
 
-  if (isLoading) return <h1>Loading...</h1>
-  if (error) return <h1>Error en la petición</h1>
+  if (isLoading) return <Loader />
+  if (error) return <h1 className="text-gray-500 text-xl font-medium">... Error en la petición ...</h1>
 
   return (
     <>

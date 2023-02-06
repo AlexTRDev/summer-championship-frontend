@@ -1,20 +1,23 @@
 import { useState } from 'react'
 import { Outlet } from 'react-router'
-import { Navbar } from '../components'
+import { Footer, Navbar } from '../components'
 import { Logos } from '../components/Logos'
 
 function LayaoutApp() {
   const [toggleMenu, setToggleMenu] = useState(false)
   return (
-    <>
-      <div>
+    <div className="flex flex-col min-h-screen w-full">
+      <header className="">
         <Logos />
         <Navbar toggle={toggleMenu} setToggle={setToggleMenu} />
-      </div>
-      <div className={`${toggleMenu ? 'hidden' : ''}`}>
+      </header>
+      <div className={`${toggleMenu ? 'hidden' : 'grow '}`}>
         <Outlet />
       </div>
-    </>
+      <div className="">
+        <Footer />
+      </div>
+    </div>
   )
 }
 
