@@ -26,12 +26,13 @@ const teamStatsAPI = apiSlice.injectEndpoints({
         method: 'DELETE',
       }),
     }),
-    updateTeamStats: build.mutation<ITeamStats, ITeamStats>({
+    updateTeamStats: build.mutation<IResponseTeamStats, ITeamStats>({
       query: ({ id, ...body }) => ({
         url: `teamStats/${id}`,
-        method: 'PUT',
+        method: 'PATCH',
         body,
       }),
+      invalidatesTags: ['TeamStats'],
     }),
   }),
   overrideExisting: false,
