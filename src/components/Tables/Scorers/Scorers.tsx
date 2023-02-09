@@ -32,16 +32,19 @@ const Scorers: React.FC<ScorersInterface> = () => {
         <tbody>
           {data?.playerStats?.map(({ gamesPlayed, goalsScored, player }, i) => {
             return (
-              <tr className="even:bg-white odd:bg-slate-200" key={crypto.randomUUID()}>
+              <tr
+                className=" h-10 text-[10px] sm:text-base even:bg-slate-200 text-gray-500  hover:from-black/90 hover:to-black/90"
+                key={crypto.randomUUID()}
+              >
                 <td className="p-2 text-center">{i + 1}</td>
-                <td className="p-2 text-start flex flex-row items-start gap-4">
-                  <TeamLogoDefault />
+                <td className="flex flex-row flex-wrap items-center h-10 sm:h-full sm:justify-start gap-x-1 sm:gap-x-2">
+                  <TeamLogoDefault tailwind="hidden sm:flex fill-gray-500 w-[25px]" />
                   <span className="text-base">{dataTeams?.teams.find(t => t.id === player.teamId)?.name}</span>
                 </td>
                 <td className="text-start">
-                  {player.name} {player.lastName}
+                  {player.lastName}, {player.name}
                 </td>
-                <td className="text-center">{gamesPlayed}</td>
+                <td className="text-center">{gamesPlayed ? gamesPlayed : '?'}</td>
                 <td className="text-center">{goalsScored}</td>
               </tr>
             )

@@ -43,8 +43,8 @@ const Classification: React.FC<ClassificationInterface> = () => {
             <th className="text-start ">Equipo</th>
             <th className="text-center">PJ</th>
             <th className="text-center">PG</th>
-            <th className="text-center">PE</th>
             <th className="text-center">PP</th>
+            <th className="text-center">PE</th>
             <th className="text-center">GF</th>
             <th className="text-center">GC</th>
             <th className="text-center">DG</th>
@@ -84,14 +84,14 @@ const Classification: React.FC<ClassificationInterface> = () => {
                   </td>
                   <td className=" text-center">{gamesPlayed}</td>
                   <td className=" text-center">{macthesWon}</td>
-                  <td className=" text-center">{matchesTied}</td>
                   <td className=" text-center">{matchesLost}</td>
+                  <td className=" text-center">{matchesTied}</td>
                   <td className=" text-center">{goalsFor}</td>
                   <td className=" text-center">{goalsAgainst}</td>
                   <td className=" text-center">{goalDifference}</td>
                   <td className=" text-center">{yellowCards}</td>
                   <td className=" text-center">{redCards}</td>
-                  <td className=" text-center">{points}</td>
+                  <td className=" text-center">{points + (team?.presentation ? 1 : 0)}</td>
                 </tr>
               )
             }

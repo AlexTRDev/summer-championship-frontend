@@ -3,12 +3,13 @@ import { ITeam } from './team'
 
 export interface ICalendar {
   id?: number
+  number: number
   homeScore: number
   awayScore: number
   homeTeamId: number
-  awayTeamId: number
+  awayTeamId?: number
   journeyId: number
-  mvpId: number
+  mvpId?: number
   homeTeam?: ITeam
   awayTeam?: ITeam
 }

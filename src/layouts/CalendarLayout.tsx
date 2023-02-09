@@ -50,10 +50,10 @@ function CalendarLayout() {
               <div>
                 {dataCalendars?.calendars
                   ?.filter(t => t.awayTeamId !== null)
-                  .map((calendar, i) => (
+                  .map(calendar => (
                     <div key={crypto.randomUUID()} className="flex flex-row gap-1 ">
                       <div className="shadow-lg shadow-radical-red bg-radical-red p-2 my-2 w-12 grid place-content-center rounded-l-lg ">
-                        <h3 className="w-full h-full text-xl  text-white text-center">{i + 1}</h3>
+                        <h3 className="w-full h-full text-xl  text-white text-center">{calendar.number}</h3>
                         <h3 className="w-full h-full text-xl  text-white text-center">{calendar.homeTeam?.serie}</h3>
                       </div>
                       <div className="shadow-lg shadow-radical-red bg-radical-red  rounded-r-xl w-full my-2 p-2 text-white sm:py-2 flex flex-col sm:grid  items-center justify-center sm:grid-cols-3 sm:grid-rows-1 sm:gap-4">
@@ -87,10 +87,10 @@ function CalendarLayout() {
 
                 {dataCalendars?.calendars
                   ?.filter(t => t.awayTeamId === null)
-                  .map((calendar, i) => (
+                  .map(calendar => (
                     <div key={crypto.randomUUID()} className="flex flex-row gap-1 w-full m-1">
                       <div className="shadow-lg shadow-radical-red rounded-l-lg bg-radical-red p-2 my-1 w-12 grid place-content-center">
-                        <h3 className="w-full h-full text-xl  text-white text-center">{i + 1}</h3>
+                        <h3 className="w-full h-full text-xl  text-white text-center">{calendar.number}</h3>
                         <h3 className="w-full h-full text-xl  text-white text-center">{calendar.homeTeam?.serie}</h3>
                       </div>
                       <div className="shadow-lg shadow-radical-red rounded-r-lg my-1 w-full flex flex-row flex-wrap justify-start items-center gap-4 p-2 bg-radical-red text-white">
