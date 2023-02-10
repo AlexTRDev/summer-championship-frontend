@@ -1,12 +1,21 @@
 // import { useRef } from 'react'
 import jsPDF from 'jspdf'
+import { useState } from 'react'
 
 interface IVoucher {
   data: any
 }
 
 const Voucher: React.FC<IVoucher> = ({ data }) => {
-  const handleGeneratePDF = () => {
+  const [name, setName] = useState('')
+
+  const handleName = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault()
+    setName(e.target.value)
+  }
+
+  const handleGeneratePDF = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
     const matches = Object.entries(data)
       .sort((a, b) => Number(a[0].split(' - ')[0]) - Number(b[0].split(' - ')[0]))
       .map(d => {
@@ -38,7 +47,7 @@ const Voucher: React.FC<IVoucher> = ({ data }) => {
 
     doc.setFontSize(10)
     doc.setTextColor('#aaa')
-    doc.text(`CODIGO - ${crypto.randomUUID().slice(0, 6)}`, 10, 20)
+    doc.text(`${name} - ${crypto.randomUUID().slice(0, 6)}`, 10, 20)
 
     let y = 40
     doc.setTextColor('#FFC745')
@@ -83,19 +92,23 @@ const Voucher: React.FC<IVoucher> = ({ data }) => {
   }
 
   return (
-    <div className="p-4 w-full relative">
-      {Object.entries(data).length !== 18 ? (
-        <h3 className="animate-bounce font-medium w-full absolute -left-40 text-radical-red-700">
-          Debes rellenar todos los campos...!
-        </h3>
-      ) : (
-        <h3 className="animate-bounce font-medium w-full absolute top-5 -left-40 text-blue-700">
-          Ya puedes generar tu Ticket...!
-        </h3>
-      )}
-      {
+    <form onSubmit={handleGeneratePDF} className="p-4 w-full flex flex-col gap-4">
+      <div className="text-gray-500">
+        <label htmlFor="name">Nombre: </label>
+        <input className="border" type="text" name="nombre" id="nombre" required onChange={e => handleName(e)} />
+      </div>
+
+      <div className="relative">
+        {Object.entries(data).length !== 18 ? (
+          <h3 className="animate-bounce font-medium w-full absolute -bottom-4 text-radical-red-700">
+            Debes rellenar todos los campos...!
+          </h3>
+        ) : (
+          <h3 className="animate-bounce font-medium w-full absolute top-5 -left-40 text-blue-700">
+            Ya puedes generar tu Ticket...!
+          </h3>
+        )}
         <button
-          onClick={handleGeneratePDF}
           className="animate-bounce h-10 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"
           disabled={Object.entries(data).length !== 18}
         >
@@ -104,8 +117,8 @@ const Voucher: React.FC<IVoucher> = ({ data }) => {
           </svg>
           <span>Generar Ticket</span>
         </button>
-      }
-    </div>
+      </div>
+    </form>
   )
 }
 
