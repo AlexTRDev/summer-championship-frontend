@@ -10,12 +10,14 @@ import {
   StatsLayout,
 } from '../layouts'
 import Contacto from '../layouts/Contacto'
+import HomeLayout from '../layouts/HomeLayout'
 
 import ProtectedRoutes from './ProtectedRoutes.routes'
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<LayoutApp />}>
+      <Route index element={<HomeLayout />} />
       <Route path="Equipos" element={<EquiposLayout />}>
         <Route path=":teamId" element={<PlayersLayout />} />
       </Route>
