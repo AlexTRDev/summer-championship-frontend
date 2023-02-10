@@ -83,12 +83,21 @@ const Voucher: React.FC<IVoucher> = ({ data }) => {
   }
 
   return (
-    <div className="p-4">
+    <div className="p-4 w-full relative">
+      {Object.entries(data).length !== 18 ? (
+        <h3 className="animate-bounce font-medium w-full absolute -left-40 text-radical-red-700">
+          Debes rellenar todos los campos...!
+        </h3>
+      ) : (
+        <h3 className="animate-bounce font-medium w-full absolute top-5 -left-40 text-blue-700">
+          Ya puedes generar tu Ticket...!
+        </h3>
+      )}
       {
         <button
           onClick={handleGeneratePDF}
           className="animate-bounce h-10 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"
-          disabled={Object.entries(data).length === 18}
+          disabled={Object.entries(data).length !== 18}
         >
           <svg className="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
             <path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z" />
