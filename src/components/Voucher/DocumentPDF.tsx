@@ -4,13 +4,7 @@ import { TeamLogoDefault } from '../../assets'
 import { Loader } from '../Loader'
 import { TablePolla } from '../Tables'
 import Voucher from './Voucher'
-1 V
-2 L
-3 V
-4 V
-5 V
-6 V
-7 L
+
 const initialState: any = {}
 const results = [
 {
