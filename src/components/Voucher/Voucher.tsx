@@ -4,9 +4,10 @@ import { useState } from 'react'
 
 interface IVoucher {
   data: any
+  jornada: number
 }
 
-const Voucher: React.FC<IVoucher> = ({ data }) => {
+const Voucher: React.FC<IVoucher> = ({ data, jornada }) => {
   const [name, setName] = useState('')
 
   const handleName = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -43,11 +44,12 @@ const Voucher: React.FC<IVoucher> = ({ data }) => {
     doc.setFont('helvetica', 'bold')
     doc.setFontSize(16)
     doc.setTextColor('#ddd')
-    doc.text('La Polla - Campeonato de Verano Chota 2023', 40, 10)
+    doc.text(`La Polla - Campeonato de Verano Chota 2023`, 40, 10)
 
     doc.setFontSize(10)
     doc.setTextColor('#aaa')
     doc.text(`${name} - ${crypto.randomUUID().slice(0, 6)}`, 10, 20)
+    doc.text(`Jornada Nº ${jornada}`, 100, 20)
 
     let y = 40
     doc.setTextColor('#FFC745')
@@ -110,7 +112,7 @@ const Voucher: React.FC<IVoucher> = ({ data }) => {
         )}
         <button
           className="animate-bounce h-10 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"
-          disabled={Object.entries(data).length !== 18}
+          // disabled={Object.entries(data).length !== 18}
         >
           <svg className="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
             <path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z" />
