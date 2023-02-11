@@ -6,7 +6,7 @@ import { Logos } from '../components/Logos'
 function LayaoutApp() {
   const [toggleMenu, setToggleMenu] = useState(false)
   return (
-    <div className="flex flex-col min-h-screen w-full">
+    <div className="flex flex-col min-h-screen min-w-full">
       <header className="">
         <Logos />
         <Navbar toggle={toggleMenu} setToggle={setToggleMenu} />
