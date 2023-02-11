@@ -80,7 +80,7 @@ const DocumentPDF = () => {
                         )}
                       </div>
                       <div className="bg-black text-base text-white w-full h-full flex gap-2 sm:rounded items-center justify-evenly">
-                        {new Date().getTime() > new Date('2023-02-11T07:00:00').getTime() ? (
+                        {selectDay===8 ? (
                           <h1> ? </h1>
                         ) : (
                           options.map(option => (
