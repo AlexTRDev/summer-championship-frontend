@@ -6,7 +6,71 @@ import { TablePolla } from '../Tables'
 import Voucher from './Voucher'
 
 const initialState: any = {}
-
+const results = [
+{
+number:1,
+result:"V"
+},
+{
+number:2,
+result:"L"
+},
+{
+number:3,
+result:"V"
+},
+{
+number:4,
+result:"V"
+},
+{
+number:5,
+result:"V"
+},
+{
+number:6,
+result:"V"
+},
+{
+number:7,
+result:"L"
+},
+{
+number:8,
+result:"?"
+},
+{
+number:9,
+result:"?"
+},{
+number:10,
+result:"?"
+},{
+number:11,
+result:"?"
+},{
+number:12,
+result:"?"
+},{
+number:13,
+result:"?"
+},{
+number:14,
+result:"?"
+},{
+number:15,
+result:"?"
+},{
+number:16,
+result:"?"
+},{
+number:17,
+result:"?"
+},{
+number:18,
+result:"?"
+}
+]
 const DocumentPDF = () => {
   const options = ['L', 'E', 'V']
 
@@ -81,7 +145,7 @@ const DocumentPDF = () => {
                       </div>
                       <div className="bg-black text-base text-white w-full h-full flex gap-2 sm:rounded items-center justify-evenly">
                         {selectDay===8 ? (
-                          <h1> ? </h1>
+                          <h1> {results.find(r => r.number === calendar.number)?.result} </h1>
                         ) : (
                           options.map(option => (
                             <div key={crypto.randomUUID()} className="grid grid-cols-2 gap-2 p-1 font-semibold">
