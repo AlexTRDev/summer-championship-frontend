@@ -1,5 +1,5 @@
 import { createBrowserRouter, createRoutesFromElements, Route } from 'react-router-dom'
-import { Asistaints, Calendars, Classification, MVP, Player, Scorers, TeamStats } from '../components'
+import { Asistaints, Calendars, Classification, MVP, Player, Scorers, ShowVoucher, TeamStats } from '../components'
 import {
   CalendarLayout,
   EquiposLayout,
@@ -38,6 +38,7 @@ export const router = createBrowserRouter(
       <Route element={<ProtectedRoutes />}>
         <Route path="profile" element={<h1>profile</h1>} />
       </Route>
+      <Route path="ver-boleto/:codigo" element={<ShowVoucher />} />
     </Route>
   )
 )
