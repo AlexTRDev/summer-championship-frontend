@@ -63,7 +63,7 @@ export let users: User[] = [
       { number: 15, result: 'L' },
       { number: 16, result: 'V' },
       { number: 17, result: 'L' },
-      { number: 18, result: ' L' },
+      { number: 18, result: 'L' },
     ],
   },
   {
@@ -806,15 +806,15 @@ export const results: IResult[] = [
   },
   {
     number: 16,
-    result: '?',
+    result: 'L',
   },
   {
     number: 17,
-    result: '?',
+    result: 'L',
   },
   {
     number: 18,
-    result: '?',
+    result: 'L',
   },
 ]
 
