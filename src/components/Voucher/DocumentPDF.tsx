@@ -81,8 +81,8 @@ const DocumentPDF = () => {
                         )}
                       </div>
                       <div className="bg-black text-base text-white w-full h-full flex gap-2 sm:rounded items-center justify-evenly">
-                        {selectDay === 8 ? (
-                          <h1> {results.find(r => r.number === calendar.number)?.result} </h1>
+                        {selectDay === 8 || selectDay === 9 ? (
+                          <h1> {results.find(r => r.polla === selectDay && r.number === calendar.number)?.result} </h1>
                         ) : (
                           options.map(option => (
                             <div key={crypto.randomUUID()} className="grid grid-cols-2 gap-2 p-1 font-semibold">
