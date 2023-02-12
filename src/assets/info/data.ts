@@ -355,7 +355,7 @@ export const results: IResult[] = [
   },
   {
     number: 15,
-    result: '?',
+    result: 'V',
   },
   {
     number: 16,
