@@ -48,7 +48,7 @@ export let users: User[] = [
       { number: 15, result: 'L' },
       { number: 16, result: 'V' },
       { number: 17, result: 'L' },
-      { number: 18, result: ' L' },
+      { number: 18, result: 'L' },
     ],
   },
   {
