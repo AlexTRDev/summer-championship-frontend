@@ -12,7 +12,7 @@ const DocumentPDF = () => {
   const options = ['L', 'E', 'V']
 
   const [selectedOption, setSelectedOption] = useState(initialState)
-  const [selectDay, setSelectDay] = useState(8)
+  const [selectDay, setSelectDay] = useState(9)
 
   const { data, isLoading, error } = useGetCalendarsQuery({
     isInclude: 'isInclude=true',
