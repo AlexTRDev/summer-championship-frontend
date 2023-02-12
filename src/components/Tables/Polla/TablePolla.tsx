@@ -24,7 +24,7 @@ const TablePolla: React.FC<PollaInterface> = ({ jornada }) => {
         <thead>
           <tr className="text-gray-500 border-b text-[10px] sm:text-base">
             {headers.map((header, i) => (
-              <th key={crypto.randomUUID()} className={`hidden sm:table-cell text-start`}>
+              <th key={crypto.randomUUID()} className={`text-start`}>
                 {header}
               </th>
             ))}
@@ -32,7 +32,7 @@ const TablePolla: React.FC<PollaInterface> = ({ jornada }) => {
         </thead>
         <tbody>
           {users
-            .sort((a, b) => a.nombre.localeCompare(b.nombre))
+            .sort((a, b) => b.aciertos - a.aciertos)
             .filter(user => user.polla === jornada)
             .map(user => (
               <tr
@@ -50,7 +50,7 @@ const TablePolla: React.FC<PollaInterface> = ({ jornada }) => {
                     Ver
                   </Link>
                 </td>
-                <td className="text-start">{user.aciertos}</td>
+                <td className="text-center">{user.aciertos}</td>
               </tr>
             ))}
         </tbody>
