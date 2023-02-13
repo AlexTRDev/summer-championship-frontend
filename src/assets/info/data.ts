@@ -853,12 +853,12 @@ export const results: IResult[] = [
   {
     polla: 9,
     number: 4,
-    result: '?',
+    result: 'V',
   },
   {
     polla: 9,
     number: 5,
-    result: '?',
+    result: 'V',
   },
   {
     polla: 9,
@@ -878,7 +878,7 @@ export const results: IResult[] = [
   {
     polla: 9,
     number: 9,
-    result: '?',
+    result: 'L',
   },
   {
     polla: 9,
@@ -888,7 +888,7 @@ export const results: IResult[] = [
   {
     polla: 9,
     number: 11,
-    result: '?',
+    result: 'V',
   },
   {
     polla: 9,
@@ -913,7 +913,7 @@ export const results: IResult[] = [
   {
     polla: 9,
     number: 16,
-    result: '?',
+    result: 'V',
   },
   {
     polla: 9,
@@ -923,7 +923,7 @@ export const results: IResult[] = [
   {
     polla: 9,
     number: 18,
-    result: '?',
+    result: 'L',
   },
 ]
 
