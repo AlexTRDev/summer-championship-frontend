@@ -898,7 +898,7 @@ export const results: IResult[] = [
   {
     polla: 9,
     number: 13,
-    result: '?',
+    result: 'E',
   },
   {
     polla: 9,
