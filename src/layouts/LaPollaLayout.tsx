@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { useGetCalendarsQuery, useGetJourneysQuery } from '../app/actions'
-import { Loader } from '../components'
+import { Loader, TablePolla } from '../components'
 import { Ticket } from '../components/Forms/Ticket'
 import { IPrediction } from '../types/prediction'
 
@@ -160,13 +160,13 @@ function LaPollaLayout() {
         <p className="text-[9px] text-gray-500 p-2  font-medium ">
           *OJO: Por cada ticket comprado se estara comisionando el 10% del precio del ticket por el servicio*
         </p>
-        <>
+        {/* <>
           <div className="bg-yellow-200 border-yellow-600 text-yellow-600 border-l-4 p-4" role="alert">
             <p className="font-bold">MANTENIMIENTO</p>
             <p>En el transcurso del dia se mostrara la tabla con los participantes</p>
           </div>
-        </>
-        {/* <TablePolla jornada={selectDay} /> */}
+        </> */}
+        <TablePolla jornada={selectDay} />
       </div>
     </div>
   )
