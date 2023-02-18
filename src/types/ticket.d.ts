@@ -1,4 +1,5 @@
 import { ICalendar } from './calendar'
+import { IResponse } from './response'
 
 export interface ITicket {
   id?: number
@@ -8,4 +9,16 @@ export interface ITicket {
   updatedAt?: string
   userId?: number
   calendars?: ICalendar[]
+}
+
+export interface IResponseTicket extends IResponse {
+  ticket: ITicket
+}
+
+export interface IResponseTickets extends IResponse {
+  tickets: ITicket[]
+}
+
+export interface IQueriesTicket extends IQueries {
+  journeyId?: string
 }
