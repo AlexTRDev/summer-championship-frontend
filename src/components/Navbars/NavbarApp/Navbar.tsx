@@ -122,6 +122,9 @@ const Navbar: React.FC<NavbarInterface> = ({ toggle, setToggle }) => {
                   Salir
                 </button>
               </div>
+              <li className="p-2" onClick={handleToggle}>
+                <NavLink to={'perfil'}>Mis tickets</NavLink>
+              </li>
             </div>
           ) : (
             <li className="p-2 grid place-content-center" onClick={handleToggle}>

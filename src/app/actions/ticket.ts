@@ -1,5 +1,4 @@
-import { IResponseTickets } from '../../types/response'
-import { ITicket } from '../../types/ticket'
+import { IQueriesTicket, IResponseTickets, ITicket } from '../../types/ticket'
 import { apiSlice } from '../api'
 
 const ticketAPI = apiSlice.injectEndpoints({
@@ -15,8 +14,8 @@ const ticketAPI = apiSlice.injectEndpoints({
     getTicket: build.query<ITicket, number>({
       query: id => `tickets/${id}`,
     }),
-    getTickets: build.query<IResponseTickets, void>({
-      query: () => 'tickets',
+    getTickets: build.query<IResponseTickets, IQueriesTicket>({
+      query: queries => `tickets?${queries.journeyId}`,
       providesTags: ['Tickets'],
     }),
     removeTicket: build.mutation<number, boolean>({

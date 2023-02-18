@@ -1,11 +1,10 @@
 import { ICalendar } from './calendar'
 import { IJourney } from './journey'
 import { IPlayer } from './person'
+import { IPlayerStats } from './playerStats'
 import { IPrediction } from './prediction'
 import { ITeam } from './team'
 import { ITeamStats } from './teamStats'
-import { ITicket } from './ticket'
-import { IUser } from './user'
 
 export interface IResponse {
   status: string
@@ -37,20 +36,6 @@ export interface IResponsePlayerStats extends IResponse {
 
 export interface IResponsePlayer extends IResponse {
   players: IPlayer[]
-}
-
-export interface IResponseUser extends IResponse {
-  user: IUser
-}
-
-export interface IResponseUsers extends IResponse {
-  users: IUsers[]
-}
-export interface IResponseTickets extends IResponse {
-  users: ITicket[]
-}
-export interface IResponseTicket extends IResponse {
-  ticket: ITicket
 }
 
 export interface IResponsePrediction extends IResponse {
