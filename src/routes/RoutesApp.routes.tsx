@@ -10,6 +10,7 @@ import {
   SignIn,
   TeamStats,
 } from '../components'
+import { Profile } from '../components/Profile'
 import {
   CalendarLayout,
   EquiposLayout,
@@ -46,6 +47,7 @@ export const router = createBrowserRouter(
       <Route path="LaPolla" element={<LaPollaLayout />} />
       <Route path="register" element={<SignIn />} />
       <Route path="login" element={<SignIn />} />
+      <Route path="perfil" element={<Profile />} />
       <Route element={<ProtectedRoutes />}>
         <Route path="profile" element={<h1>profile</h1>} />
       </Route>
