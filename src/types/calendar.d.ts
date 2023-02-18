@@ -1,4 +1,5 @@
 import { IJourney } from './journey'
+import { IPrediction } from './prediction'
 import { ITeam } from './team'
 
 export interface ICalendar {
@@ -12,4 +13,5 @@ export interface ICalendar {
   mvpId?: number
   homeTeam?: ITeam
   awayTeam?: ITeam
+  Prediction?: IPrediction
 }

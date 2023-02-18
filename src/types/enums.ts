@@ -14,3 +14,9 @@ export enum Gender {
   FEMENINO = 'F',
   OTRO = 'O',
 }
+
+export enum Result {
+  HOME = 'V',
+  AWAY = 'L',
+  DRAW = 'E',
+}

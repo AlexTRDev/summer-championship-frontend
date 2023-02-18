@@ -1,6 +1,7 @@
 export { default as CalendarLayout } from './CalendarLayout'
 export { default as Contacto } from './Contacto'
 export { default as EquiposLayout } from './EquiposLayout'
+export { default as HomeLayout } from './HomeLayout'
 export { default as LaPollaLayout } from './LaPollaLayout'
 export { default as LayoutApp } from './LayoutApp'
 export { default as PlayersLayout } from './PlayersLayout'

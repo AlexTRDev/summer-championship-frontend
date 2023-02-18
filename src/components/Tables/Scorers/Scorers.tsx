@@ -1,5 +1,5 @@
 import React from 'react'
-import { useGetPlayerStatsQuery, useGetTeamsQuery } from '../../../app'
+import { useGetPlayerStatsQuery, useGetTeamsQuery } from '../../../app/actions'
 import { TeamLogoDefault } from '../../../assets'
 import { Loader } from '../../Loader'
 

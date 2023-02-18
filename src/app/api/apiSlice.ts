@@ -5,5 +5,15 @@ const API_URL = import.meta.env.VITE_API_URL_DEV || import.meta.env.VITE_API_URL
 export const apiSlice = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: API_URL }),
   endpoints: () => ({}),
-  tagTypes: ['Calendars', 'Journeys', 'TeamStats', 'PlayerStats'],
+  tagTypes: [
+    'Calendars',
+    'Journeys',
+    'TeamStats',
+    'PlayerStats',
+    'Users',
+    'Tickets',
+    'Predictions',
+    'Wallets',
+    'Wallet',
+  ],
 })

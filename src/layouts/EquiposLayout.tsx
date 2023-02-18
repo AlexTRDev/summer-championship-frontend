@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router'
-import { useGetTeamsQuery } from '../app'
+import { useGetTeamsQuery } from '../app/actions'
 import { Loader } from '../components'
 import TeamCard from '../components/Cards/TeamCard'
 

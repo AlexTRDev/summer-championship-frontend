@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useGetJourneysQuery, useGetCalendarsQuery } from '../app'
+import { useGetJourneysQuery, useGetCalendarsQuery } from '../app/actions'
 import { TeamLogoDefault } from '../assets'
 import { Loader } from '../components'
 
