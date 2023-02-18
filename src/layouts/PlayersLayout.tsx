@@ -1,5 +1,5 @@
 import { useParams } from 'react-router'
-import { useGetTeamQuery } from '../app'
+import { useGetTeamQuery } from '../app/actions'
 import { TeamLogoDefault } from '../assets'
 import { Loader, PlayerPro } from '../components'
 import { colors, fills, gradients } from '../utils'

@@ -1,5 +1,15 @@
 import { createBrowserRouter, createRoutesFromElements, Route } from 'react-router-dom'
-import { Asistaints, Calendars, Classification, MVP, Player, Scorers, ShowVoucher, TeamStats } from '../components'
+import {
+  Asistaints,
+  Calendars,
+  Classification,
+  MVP,
+  Player,
+  Scorers,
+  ShowVoucher,
+  SignIn,
+  TeamStats,
+} from '../components'
 import {
   CalendarLayout,
   EquiposLayout,
@@ -34,7 +44,8 @@ export const router = createBrowserRouter(
       <Route path="admin/clasificacion" element={<TeamStats />} />
       <Route path="admin/calendars" element={<Calendars />} />
       <Route path="LaPolla" element={<LaPollaLayout />} />
-      <Route path="register" element={<h1>hello wordl</h1>} />
+      <Route path="register" element={<SignIn />} />
+      <Route path="login" element={<SignIn />} />
       <Route element={<ProtectedRoutes />}>
         <Route path="profile" element={<h1>profile</h1>} />
       </Route>
