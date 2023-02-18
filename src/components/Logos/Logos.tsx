@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import { useGetTeamsQuery } from '../../app'
+import { useGetTeamsQuery } from '../../app/actions'
 import { ChampionshipLogoDefault, TeamLogoDefault } from '../../assets'
 import { Loader } from '../Loader'
 
