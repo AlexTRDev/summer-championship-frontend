@@ -1,5 +1,5 @@
-import { ITicket } from '../../types/ticket'
 import { IResponseTickets } from '../../types/response'
+import { ITicket } from '../../types/ticket'
 import { apiSlice } from '../api'
 
 const ticketAPI = apiSlice.injectEndpoints({
