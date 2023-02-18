@@ -1,25 +1,58 @@
-import { Link } from 'react-router-dom'
-import { users } from '../../../assets/info/data'
+import { useEffect, useState } from 'react'
+import { useGetTicketsQuery, useGetUsersQuery } from '../../../app/actions'
+import { IPrediction } from '../../../types/prediction'
+import { Loader } from '../../Loader'
 
 export interface PollaInterface {
   jornada: number
 }
 
-const headers = ['Código', 'Nombre Completo', 'Polla', 'Aciertos']
+const headers = ['Pos', 'Nombre', 'Reventon', 'Aciertos']
 
 const TablePolla: React.FC<PollaInterface> = ({ jornada }) => {
-  const handleClick = () => {
-    if (window.screen.width > 900) window.scrollTo({ top: 121, behavior: 'smooth' })
-    else window.scrollTo({ top: 64, behavior: 'smooth' })
-  }
+  const {
+    data: dataTickets,
+    isLoading,
+    isError,
+    isSuccess: ticketsSuccess,
+  } = useGetTicketsQuery({
+    journeyId: `journeyId=${jornada}`,
+  })
+  const { data: usersData, isSuccess: usersSuccess } = useGetUsersQuery()
+
+  const [results, setResults] = useState<IPrediction[]>([])
+  // const handleClick = () => {
+  //   if (window.screen.width > 900) window.scrollTo({ top: 121, behavior: 'smooth' })
+  //   else window.scrollTo({ top: 64, behavior: 'smooth' })
+  // }
+  useEffect(() => {
+    if (usersSuccess && ticketsSuccess) {
+      const predictions = dataTickets.tickets
+        .find(t => t?.userId === 4)
+        ?.calendars?.map(c => {
+          return {
+            calendarId: c.Prediction?.calendarId,
+            result: c.Prediction?.result,
+          }
+        })
+      setResults(predictions as IPrediction[])
+    }
+  }, [usersData?.users])
+
+  console.log(results)
+
+  if (isLoading) return <Loader />
+  if (isError) return <h1>Upps!! Ocurrio un error con los de tickets</h1>
+
   return (
     <div className="p-2 w-full min-h-[200px] border-t ">
       <h1 className="text-blue-500 font-bold text-xl">
         PARTICIPANTES{' '}
         <span className="animate-pulse text-xl font-bold  text-radical-red">
-          {users.filter(user => user.polla === jornada).length}
+          {dataTickets?.tickets.length ? dataTickets?.tickets.length - 1 : 0}
         </span>
       </h1>
+      <h3 className="text-gray-600 text-xs">Polla Nº{jornada}</h3>
       <table className="table-auto w-full ">
         <thead>
           <tr className="text-gray-500 border-b text-[10px] sm:text-base">
@@ -31,28 +64,28 @@ const TablePolla: React.FC<PollaInterface> = ({ jornada }) => {
           </tr>
         </thead>
         <tbody>
-          {users
-            .sort((a, b) => b.aciertos - a.aciertos)
-            .filter(user => user.polla === jornada)
-            .map(user => (
-              <tr
-                key={crypto.randomUUID()}
-                className=" h-10 text-[10px] sm:text-base even:bg-slate-200 text-gray-500  hover:from-black/90 hover:to-black/90"
-              >
-                <td className="text-start uppercase">{user.codigo}</td>
-                <td className="text-start uppercase">{user.nombre}</td>
-                <td className="text-start">
-                  <Link
-                    onClick={handleClick}
-                    to={`/ver-boleto/${user.codigo}`}
-                    className="bg-black font-semibold w-12 text-[#FFC745] py-1 px-2 rounded"
-                  >
-                    Ver
-                  </Link>
-                </td>
-                <td className="text-center">{user.aciertos}</td>
-              </tr>
-            ))}
+          {usersSuccess &&
+            dataTickets?.tickets
+              ?.filter(t => t.userId !== 4)
+              .map((ticket, i) => (
+                <tr key={crypto.randomUUID()} className="text-gray-500 border-b text-[10px] sm:text-base">
+                  <td className="text-start">{i + 1}</td>
+                  <td className="text-start">
+                    {usersData?.users?.find(user => user?.id === ticket?.userId)?.name ??
+                      usersData?.users?.find(user => user?.id === ticket?.userId)?.email}
+                  </td>
+                  {/* <td className="text-start">Ver</td> */}
+                  <td className="text-start">{ticket.pro ? 'Si' : 'No'}</td>
+                  <td className="text-start">
+                    {ticket.calendars?.reduce((acc, calendar) => {
+                      if (calendar.Prediction?.result === results.find(r => r.calendarId === calendar.id)?.result) {
+                        return acc + 1
+                      }
+                      return acc + 0
+                    }, 0)}
+                  </td>
+                </tr>
+              ))}
         </tbody>
       </table>
     </div>
