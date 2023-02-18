@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useGetTeamStatsQuery, useUpdateTeamStatsMutation } from '../../../app'
+import { useGetTeamStatsQuery, useUpdateTeamStatsMutation } from '../../../app/actions'
 import { ITeamStats } from '../../../types/teamStats'
 import { Loader } from '../../Loader'
 import { Classification } from '../../Tables/Classification'
