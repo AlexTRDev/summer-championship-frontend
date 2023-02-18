@@ -3,6 +3,7 @@ import { useGetTeamsQuery, useGetTicketsQuery } from '../../app/actions'
 import { selectUser } from '../../app/api/userSlice'
 import { useAppSelector } from '../../app/hooks'
 import { Loader } from '../Loader'
+
 export interface ProfileInterface {}
 
 const Profile: React.FC<ProfileInterface> = () => {
