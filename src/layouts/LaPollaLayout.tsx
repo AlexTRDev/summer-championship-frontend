@@ -10,15 +10,13 @@ const options = ['L', 'E', 'V']
 
 function LaPollaLayout() {
   const [selectDay, setSelectDay] = useState(10)
+  const [predictions, setPredictions] = useState<IPrediction[]>([])
 
   const { data, isLoading, error, isSuccess } = useGetCalendarsQuery({
     isInclude: 'isInclude=true',
     journeyId: `journeyId=${selectDay}`,
   })
-
   const journeysQuery = useGetJourneysQuery()
-
-  const [predictions, setPredictions] = useState<IPrediction[]>([])
 
   useEffect(() => {
     if (isSuccess) {
@@ -34,12 +32,6 @@ function LaPollaLayout() {
       setPredictions(pred)
     }
   }, [data?.calendars])
-
-  if (journeysQuery.isLoading) return <Loader />
-  if (journeysQuery.error) return <h1>Upps!! Ocurrio un error con las Jornadas</h1>
-
-  if (isLoading) return <Loader />
-  if (error) return <h1>Upps!! Ocurrio un error con el calenderio de partidos</h1>
 
   const handleOptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault()
@@ -57,6 +49,9 @@ function LaPollaLayout() {
     e.preventDefault()
     setSelectDay(Number(e.target.value))
   }
+
+  if (journeysQuery.isLoading || isLoading) return <Loader />
+  if (journeysQuery.error || error) return <h1>Upps!! Ocurrio un error con las Jornadas</h1>
 
   return (
     <div className="p-2 w-full">

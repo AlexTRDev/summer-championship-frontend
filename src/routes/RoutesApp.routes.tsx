@@ -10,6 +10,7 @@ import {
   SignIn,
   TeamStats,
 } from '../components'
+import { LaPolla } from '../components/Polla/LaPolla'
 import { Profile } from '../components/Profile'
 import {
   CalendarLayout,
@@ -44,10 +45,12 @@ export const router = createBrowserRouter(
       <Route path="Reglamento" element={<ReglamentoLayout />} />
       <Route path="admin/clasificacion" element={<TeamStats />} />
       <Route path="admin/calendars" element={<Calendars />} />
+      <Route path="admin/la-polla" element={<LaPolla />} />
       <Route path="LaPolla" element={<LaPollaLayout />} />
       <Route path="register" element={<SignIn />} />
       <Route path="login" element={<SignIn />} />
       <Route path="perfil" element={<Profile />} />
+      {/* <Route path="admin" element={<PollaResults />} /> */}
       <Route element={<ProtectedRoutes />}>
         <Route path="profile" element={<h1>profile</h1>} />
       </Route>

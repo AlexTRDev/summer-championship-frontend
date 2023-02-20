@@ -1,6 +1,10 @@
-import { IPrediction } from '../../types/prediction'
-import { IPredictionRequest } from '../../types/request'
-import { IResponsePredictions } from '../../types/response'
+import {
+  IPrediction,
+  IPredictionRequest,
+  IRequestPrediction,
+  IResponsePrediction,
+  IResponsePredictions,
+} from '../../types/prediction'
 import { apiSlice } from '../api'
 
 const predictionAPI = apiSlice.injectEndpoints({
@@ -15,10 +19,11 @@ const predictionAPI = apiSlice.injectEndpoints({
           Authorization: `Bearer ${token}`,
         },
       }),
-      invalidatesTags: ['Predictions', 'Wallet', 'Tickets'],
+      invalidatesTags: ['Predictions'],
     }),
-    getPrediction: build.query<IPrediction, number>({
-      query: id => `predictions/${id}`,
+    getPrediction: build.query<IResponsePrediction, IRequestPrediction>({
+      query: ({ ticketId, calendarId }) => `predictions/admin/${ticketId}/${calendarId}`,
+      providesTags: ['Prediction'],
     }),
     getPredictions: build.query<IResponsePredictions, void>({
       query: () => 'predictions',
@@ -30,12 +35,13 @@ const predictionAPI = apiSlice.injectEndpoints({
         method: 'DELETE',
       }),
     }),
-    updatePrediction: build.mutation<IPrediction, IPrediction>({
+    updatePrediction: build.mutation<IResponsePrediction, IRequestPrediction>({
       query: body => ({
-        url: `predictions`,
-        method: 'PUT',
+        url: `predictions/admin/${body.ticketId}/${body.calendarId}`,
+        method: 'PATCH',
         body,
       }),
+      invalidatesTags: ['Predictions', 'Prediction'],
     }),
   }),
   overrideExisting: false,
