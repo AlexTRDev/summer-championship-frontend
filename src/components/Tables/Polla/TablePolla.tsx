@@ -64,7 +64,6 @@ const TablePolla: React.FC<PollaInterface> = ({ jornada }) => {
               ?.filter(t => t.userId !== 4)
               .map((ticket, i) => {
                 return {
-                  number: i + 1,
                   name:
                     usersData?.users?.find(u => u.id === ticket.userId)?.name ??
                     usersData?.users?.find(user => user?.id === ticket?.userId)?.email,
@@ -82,13 +81,13 @@ const TablePolla: React.FC<PollaInterface> = ({ jornada }) => {
                 }
               })
               .sort((a, b) => (b.aciertos ?? 0) - (a.aciertos ?? 0))
-              .map(b => (
+              .map((b, i) => (
                 <tr key={crypto.randomUUID()} className="text-gray-500 border-b text-[10px] sm:text-base">
-                  <td className="text-start">{b.number}</td>
+                  <td className="text-start">{i + 1}</td>
                   <td className="text-start">{b.name}</td>
                   {/* <td className="text-start">Ver</td> */}
                   <td className="text-start">{b.reventon}</td>
-                  <td className="text-start">{b.aciertos}</td>
+                  <td className="text-start">{b.aciertos ? b.aciertos + 1 : ''}</td>
                 </tr>
               ))}
         </tbody>

@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { useGetCalendarsQuery, useGetJourneysQuery } from '../app/actions'
 import { Loader, TablePolla } from '../components'
 import { Ticket } from '../components/Forms/Ticket'
+import { TicketResult } from '../components/Tickets'
 import { IPrediction } from '../types/prediction'
 
 const options = ['L', 'E', 'V']
@@ -81,6 +82,8 @@ function LaPollaLayout() {
 
         {selectDay !== 10 ? (
           <h1 className="text-gray-500 p-2 font-medium">Pronto toda la lista de pollas</h1>
+        ) : selectDay === 10 ? (
+          <h1 className="text-gray-500 p-2 font-medium">Polla 10</h1>
         ) : (
           <section className="p-2 bg-transparent w-full">
             <div className="grid grid-cols-1 sm:grid-cols-2 sm:gap-x-2 ">
@@ -118,8 +121,6 @@ function LaPollaLayout() {
                 ))}
             </div>
             <div className="flex flex-col items-center mt-4 justify-center bg-transparent">
-              <h1 className="text-lg font-bold text-gray-600 text-start  w-full">Descansan</h1>
-
               <div className="grid grid-cols-1 sm:grid-cols-2 w-full gap-2">
                 {data?.calendars
                   ?.filter(t => t.awayTeamId === null)
@@ -150,7 +151,7 @@ function LaPollaLayout() {
         </p>
         <p className="text-[9px] text-gray-500 p-2  font-medium ">
           *Premiacioón: La premiación al ganador(a) o ganadores se les estara haciendo entraga del mismo al finalizar
-          todos los encuentros deportivos en el mismo recinto de dicho campeonato(Coliseo Predro Coronado Alamo)*
+          todos los encuentros deportivos.
         </p>
         <p className="text-[9px] text-gray-500 p-2  font-medium ">
           *OJO: Por cada ticket comprado se estara comisionando el 10% del precio del ticket por el servicio*
@@ -161,6 +162,7 @@ function LaPollaLayout() {
             <p>En el transcurso del dia se mostrara la tabla con los participantes</p>
           </div>
         </> */}
+        {data?.calendars && <TicketResult journeyId={selectDay} calendars={data?.calendars} />}
         <TablePolla jornada={selectDay} />
       </div>
     </div>

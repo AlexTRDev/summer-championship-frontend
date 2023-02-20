@@ -1,4 +1,4 @@
-import { IQueriesTicket, IResponseTickets, ITicket } from '../../types/ticket'
+import { IQueriesTicket, IResponseTickets, IResponseTicket, ITicket } from '../../types/ticket'
 import { apiSlice } from '../api'
 
 const ticketAPI = apiSlice.injectEndpoints({
@@ -11,7 +11,7 @@ const ticketAPI = apiSlice.injectEndpoints({
       }),
       invalidatesTags: ['Tickets'],
     }),
-    getTicket: build.query<ITicket, number>({
+    getTicket: build.query<IResponseTicket, number>({
       query: id => `tickets/${id}`,
     }),
     getTickets: build.query<IResponseTickets, IQueriesTicket>({
