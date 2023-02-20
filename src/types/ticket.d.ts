@@ -12,7 +12,7 @@ export interface ITicket {
 }
 
 export interface IResponseTicket extends IResponse {
-  ticket: ITicket
+  data: ITicket
 }
 
 export interface IResponseTickets extends IResponse {
