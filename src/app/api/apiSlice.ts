@@ -12,8 +12,10 @@ export const apiSlice = createApi({
     'PlayerStats',
     'Users',
     'Tickets',
+    'Prediction',
     'Predictions',
     'Wallets',
     'Wallet',
+    'Results',
   ],
 })
