@@ -37,11 +37,3 @@ export interface IResponsePlayerStats extends IResponse {
 export interface IResponsePlayer extends IResponse {
   players: IPlayer[]
 }
-
-export interface IResponsePrediction extends IResponse {
-  prediction: IPrediction
-}
-
-export interface IResponsePredictions extends IResponse {
-  predictions: IPrediction[]
-}
