@@ -18,12 +18,15 @@ const Navbar: React.FC<NavbarInterface> = ({ toggle, setToggle }) => {
   const user = useAppSelector(selectUser)
   const token = useAppSelector(selectToken)
   const dispatch = useAppDispatch()
+
   const { data, isLoading, error, isSuccess } = useGetWalletQuery(token)
 
   const handleToggle = () => {
     if (window.screen.width < 640) setToggle(!toggle)
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
+
+  if (isLoading) return <Loader />
 
   const handleLogout = async () => {
     dispatch(setUser())
