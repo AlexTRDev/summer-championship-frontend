@@ -20,11 +20,8 @@ const TablePolla: React.FC<PollaInterface> = ({ jornada }) => {
   })
   const { data: usersData, isSuccess: usersSuccess } = useGetUsersQuery()
 
-  const [results, setResults] = useState<IPrediction[]>([])
-  // const handleClick = () => {
-  //   if (window.screen.width > 900) window.scrollTo({ top: 121, behavior: 'smooth' })
-  //   else window.scrollTo({ top: 64, behavior: 'smooth' })
-  // }
+  const [_results, setResults] = useState<IPrediction[]>([])
+
   useEffect(() => {
     if (usersSuccess && ticketsSuccess) {
       const predictions = dataTickets.tickets
@@ -39,8 +36,6 @@ const TablePolla: React.FC<PollaInterface> = ({ jornada }) => {
     }
   }, [usersData?.users])
 
-  console.log(results)
-
   if (isLoading) return <Loader />
   if (isError) return <h1>Upps!! Ocurrio un error con los de tickets</h1>
 
@@ -53,7 +48,7 @@ const TablePolla: React.FC<PollaInterface> = ({ jornada }) => {
         </span>
       </h1>
       <h3 className="text-gray-600 text-xs">Polla Nº{jornada}</h3>
-      <table className="table-auto w-full ">
+      <table className="table-auto w-full">
         <thead>
           <tr className="text-gray-500 border-b text-[10px] sm:text-base">
             {headers.map((header, i) => (
@@ -67,23 +62,33 @@ const TablePolla: React.FC<PollaInterface> = ({ jornada }) => {
           {usersSuccess &&
             dataTickets?.tickets
               ?.filter(t => t.userId !== 4)
-              .map((ticket, i) => (
+              .map((ticket, i) => {
+                return {
+                  number: i + 1,
+                  name:
+                    usersData?.users?.find(u => u.id === ticket.userId)?.name ??
+                    usersData?.users?.find(user => user?.id === ticket?.userId)?.email,
+                  reventon: ticket.pro ? 'Si' : 'No',
+                  aciertos: ticket.calendars?.reduce((acc, calendar) => {
+                    if (
+                      calendar.Prediction?.result ===
+                      dataTickets.tickets.find(t => t.userId === 4)?.calendars?.find(c => c.id === calendar.id)
+                        ?.Prediction?.result
+                    ) {
+                      return acc + 1
+                    }
+                    return acc + 0
+                  }, 0),
+                }
+              })
+              .sort((a, b) => (b.aciertos ?? 0) - (a.aciertos ?? 0))
+              .map(b => (
                 <tr key={crypto.randomUUID()} className="text-gray-500 border-b text-[10px] sm:text-base">
-                  <td className="text-start">{i + 1}</td>
-                  <td className="text-start">
-                    {usersData?.users?.find(user => user?.id === ticket?.userId)?.name ??
-                      usersData?.users?.find(user => user?.id === ticket?.userId)?.email}
-                  </td>
+                  <td className="text-start">{b.number}</td>
+                  <td className="text-start">{b.name}</td>
                   {/* <td className="text-start">Ver</td> */}
-                  <td className="text-start">{ticket.pro ? 'Si' : 'No'}</td>
-                  <td className="text-start">
-                    {ticket.calendars?.reduce((acc, calendar) => {
-                      if (calendar.Prediction?.result === results.find(r => r.calendarId === calendar.id)?.result) {
-                        return acc + 1
-                      }
-                      return acc + 0
-                    }, 0)}
-                  </td>
+                  <td className="text-start">{b.reventon}</td>
+                  <td className="text-start">{b.aciertos}</td>
                 </tr>
               ))}
         </tbody>
