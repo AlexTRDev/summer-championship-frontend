@@ -115,7 +115,15 @@ function CalendarLayout() {
                 {dataCalendars?.calendars
                   ?.filter(t => t.awayTeamId === null)
                   .map(calendar => (
-                    <div key={crypto.randomUUID()} className="flex flex-row gap-1 w-full m-1">
+                    <div key={crypto.randomUUID()} className="flex flex-row gap-1 w-full m-1 relative">
+                      {admin && (
+                        <button
+                          className="absolute text-white border-2 font-bold w-7 rounded-full top-4 left-2 sm:top-3 sm:right-2 sm:left-auto"
+                          onClick={() => handleDelete(calendar.id as number)}
+                        >
+                          X
+                        </button>
+                      )}
                       <div className="shadow-lg shadow-radical-red rounded-l-lg bg-radical-red p-2 my-1 w-12 grid place-content-center">
                         <h3 className="w-full h-full text-xl  text-white text-center">{calendar.number}</h3>
                         <h3 className="w-full h-full text-xl  text-white text-center">{calendar.homeTeam?.serie}</h3>

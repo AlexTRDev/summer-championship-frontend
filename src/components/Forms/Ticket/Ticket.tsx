@@ -56,6 +56,7 @@ const Ticket: React.FC<TicketInterface> = ({ predictions, calendars }) => {
       <h3 className="font-medium text-gray-500 text-center text-[10px] pt-2">
         POLLA Nº {calendars[0]?.journeyId ?? ''}
       </h3>
+      <h3 className="font-medium text-gray-500 text-center text-[10px] pt-2">Mis Predicciones</h3>
       <div className="flex text-gray-600 items-center justify-between text-[10px] px-1 pt-1 ">
         <p>
           Nº <span className="px-6">Local</span> <span className="px-6">Visitante</span>
