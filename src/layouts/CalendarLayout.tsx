@@ -1,24 +1,43 @@
-import { useState } from 'react'
-import { useGetJourneysQuery, useGetCalendarsQuery } from '../app/actions'
+import { useEffect, useState } from 'react'
+import { useLocation } from 'react-router'
+import { useGetJourneysQuery, useGetCalendarsQuery, useRemoveCalendarMutation } from '../app/actions'
 import { TeamLogoDefault } from '../assets'
 import { Loader } from '../components'
 
 function CalendarLayout() {
+  const [admin, setAdmin] = useState(false)
   const [selectDay, setSelectDay] = useState(1)
-  const { data: dataCalendars, ...calendarsAPI } = useGetCalendarsQuery({
+
+  const location = useLocation()
+
+  const {
+    data: dataCalendars,
+    isLoading: calendarLoading,
+    error: calendarError,
+  } = useGetCalendarsQuery({
     isInclude: 'isInclude=true',
     journeyId: `journeyId=${selectDay}`,
   })
-  const { data: dataJourneys, ...dayAPI } = useGetJourneysQuery()
+  const { data: dataJourneys, isLoading: dayLoading, error: dayError } = useGetJourneysQuery()
+  const [deleteCalendar, { isLoading: deleteLoading }] = useRemoveCalendarMutation()
 
   const handleSelectDay = (e: any) => {
     e.preventDefault()
     setSelectDay(Number(e.target.value))
   }
 
-  if (calendarsAPI.isLoading || dayAPI.isLoading) return <Loader />
-  if (calendarsAPI.error || dayAPI.isError)
+  const handleDelete = async (id: number) => {
+    await deleteCalendar(id)
+  }
+
+  useEffect(() => {
+    if (location.pathname === '/admin/calendars') setAdmin(true)
+  }, [location.pathname])
+
+  if (calendarLoading || dayLoading || deleteLoading) return <Loader />
+  if (calendarError || dayError)
     return <h1 className="text-gray-500 text-xl font-medium">... Error en la petición ...</h1>
+
   return (
     <>
       <div>
@@ -51,7 +70,15 @@ function CalendarLayout() {
                 {dataCalendars?.calendars
                   ?.filter(t => t.awayTeamId !== null)
                   .map(calendar => (
-                    <div key={crypto.randomUUID()} className="flex flex-row gap-1 ">
+                    <div key={crypto.randomUUID()} className="flex flex-row gap-1 relative">
+                      {admin && (
+                        <button
+                          className="absolute text-white border-2 font-bold w-7 rounded-full top-4 left-2 sm:top-3 sm:right-2 sm:left-auto"
+                          onClick={() => handleDelete(calendar.id as number)}
+                        >
+                          X
+                        </button>
+                      )}
                       <div className="shadow-lg shadow-radical-red bg-radical-red p-2 my-2 w-12 grid place-content-center rounded-l-lg ">
                         <h3 className="w-full h-full text-xl  text-white text-center">{calendar.number}</h3>
                         <h3 className="w-full h-full text-xl  text-white text-center">{calendar.homeTeam?.serie}</h3>

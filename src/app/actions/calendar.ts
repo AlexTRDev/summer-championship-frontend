@@ -20,11 +20,12 @@ const calendarAPI = apiSlice.injectEndpoints({
     getCalendar: build.query<ICalendar, number>({
       query: id => `calendars/${id}`,
     }),
-    removeCalendar: build.mutation<number, boolean>({
+    removeCalendar: build.mutation<boolean, number>({
       query: id => ({
         url: `calendars/${id}`,
         method: 'DELETE',
       }),
+      invalidatesTags: ['Calendars'],
     }),
     updateCalendar: build.mutation<ICalendar, ICalendar>({
       query: ({ id, ...body }) => ({

@@ -17,7 +17,7 @@ const initialState: ICalendar = {
 
 const Match: React.FC<MatchInterface> = () => {
   const [match, setMatch] = useState(initialState)
-  const [createMatch] = useCreateCalendarMutation()
+  const [createMatch, { isLoading: createLoading }] = useCreateCalendarMutation()
   const { data, isLoading, error } = useGetTeamsQuery()
   const { data: dataJourneys } = useGetJourneysQuery()
 
@@ -113,6 +113,7 @@ const Match: React.FC<MatchInterface> = () => {
           Crear{' '}
         </button>
       </form>
+      {createLoading && <Loader />}
       <CalendarLayout />
     </div>
   )
