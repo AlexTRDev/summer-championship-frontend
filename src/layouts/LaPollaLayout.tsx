@@ -10,7 +10,7 @@ import { IPrediction } from '../types/prediction'
 const options = ['L', 'E', 'V']
 
 function LaPollaLayout() {
-  const [selectDay, setSelectDay] = useState(10)
+  const [selectDay, setSelectDay] = useState(12)
   const [predictions, setPredictions] = useState<IPrediction[]>([])
 
   const { data, isLoading, error, isSuccess } = useGetCalendarsQuery({
@@ -80,8 +80,8 @@ function LaPollaLayout() {
           ))}
         </select>
 
-        {selectDay !== 10 ? (
-          <h1 className="text-gray-500 p-2 font-medium">Pronto toda la lista de pollas</h1>
+        {selectDay !== 10 && selectDay !== 12 ? (
+          <h1 className="text-gray-500 p-2 font-medium">No hubo polla este dia</h1>
         ) : selectDay === 10 ? (
           <h1 className="text-gray-500 p-2 font-medium">Polla 10</h1>
         ) : (
@@ -147,7 +147,7 @@ function LaPollaLayout() {
 
         <p className="text-[9px] text-gray-500 p-2  font-medium ">
           *Participar: Para participar deberas recargar tu saldo mediante los metodos de pago disponibles y mandar la
-          imagen del aporte. Despues de su revision tendras tu saldo disponible en tu cuenta*
+          imagen del aporte. Posterior a su revision tendras tu saldo disponible en tu cuenta*
         </p>
         <p className="text-[9px] text-gray-500 p-2  font-medium ">
           *Premiacioón: La premiación al ganador(a) o ganadores se les estara haciendo entraga del mismo al finalizar
@@ -162,8 +162,14 @@ function LaPollaLayout() {
             <p>En el transcurso del dia se mostrara la tabla con los participantes</p>
           </div>
         </> */}
-        {data?.calendars && <TicketResult journeyId={selectDay} calendars={data?.calendars} />}
-        <TablePolla jornada={selectDay} />
+        {selectDay !== 10 && selectDay !== 12 ? (
+          ''
+        ) : (
+          <div>
+            {data?.calendars && <TicketResult journeyId={selectDay} calendars={data?.calendars} />}
+            <TablePolla jornada={selectDay} />
+          </div>
+        )}
       </div>
     </div>
   )
