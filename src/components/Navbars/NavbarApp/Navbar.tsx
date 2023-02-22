@@ -103,6 +103,11 @@ const Navbar: React.FC<NavbarInterface> = ({ toggle, setToggle }) => {
               Sobre mi
             </NavLink>
           </li>
+          <li className="p-2" onClick={handleToggle}>
+            <NavLink to="yape" className={({ isActive }) => (isActive !== true ? ' hover:text-white' : 'text-white')}>
+              Recargar
+            </NavLink>
+          </li>
 
           {user ? (
             <div className="flex flex-row flex-wrap items-center justify-center gap-4 text-white bg-black/50 px-2 text-sm">
