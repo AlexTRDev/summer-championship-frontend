@@ -36,12 +36,12 @@ const Ticket: React.FC<TicketInterface> = ({ predictions, calendars }) => {
   const handleComprar = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     if (user === null) {
       setShowAlert(true)
-      setAlertMessage(['Debes iniciar sesión para comprar tickets', 'Ir a loearme'])
+      setAlertMessage(['Debes iniciar sesión para comprar tickets', 'Ir a loearme', '/login'])
       return
     }
     if (data?.wallet && data?.wallet.balance && data.wallet.balance < ticket.price) {
       setShowAlert(true)
-      setAlertMessage(['No tienes suficiente saldo.', 'Ir a recargarme'])
+      setAlertMessage(['No tienes suficiente saldo.', 'Ir a recargarme', '/yape'])
     }
 
     await createPrediction({
@@ -204,7 +204,7 @@ const Ticket: React.FC<TicketInterface> = ({ predictions, calendars }) => {
                 <div className="bg-yellow-200 border-yellow-600 text-yellow-600 border-l-4 p-4" role="alert">
                   <p className="font-bold">Alerta</p>
                   <p>{alertMessage[0]}</p>
-                  <Link to="/login" className="text-blue-500 hover:text-blue-600 text-base underline">
+                  <Link to={alertMessage[2]} className="text-blue-500 hover:text-blue-600 text-base underline">
                     {alertMessage[1]}
                   </Link>
                 </div>
