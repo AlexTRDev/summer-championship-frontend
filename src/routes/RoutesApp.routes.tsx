@@ -12,6 +12,7 @@ import {
 } from '../components'
 import { LaPolla } from '../components/Polla/LaPolla'
 import { Profile } from '../components/Profile'
+import { Yape } from '../components/Yape'
 import {
   CalendarLayout,
   EquiposLayout,
@@ -50,6 +51,7 @@ export const router = createBrowserRouter(
       <Route path="register" element={<SignIn />} />
       <Route path="login" element={<SignIn />} />
       <Route path="perfil" element={<Profile />} />
+      <Route path="yape" element={<Yape />} />
       {/* <Route path="admin" element={<PollaResults />} /> */}
       <Route element={<ProtectedRoutes />}>
         <Route path="profile" element={<h1>profile</h1>} />
