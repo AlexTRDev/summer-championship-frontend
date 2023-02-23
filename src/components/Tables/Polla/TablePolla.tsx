@@ -61,7 +61,7 @@ const TablePolla: React.FC<PollaInterface> = ({ jornada }) => {
         <tbody>
           {usersSuccess &&
             dataTickets?.tickets
-              ?.filter(t => t.id !== 11)
+              ?.filter(t => t?.userId !== 4)
               .map(ticket => {
                 return {
                   name:
