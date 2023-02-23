@@ -12,6 +12,7 @@ import {
 } from '../components'
 import { LaPolla } from '../components/Polla/LaPolla'
 import { Profile } from '../components/Profile'
+import { Wallet } from '../components/Wallet'
 import { Yape } from '../components/Yape'
 import {
   CalendarLayout,
@@ -47,6 +48,7 @@ export const router = createBrowserRouter(
       <Route path="admin/clasificacion" element={<TeamStats />} />
       <Route path="admin/calendars" element={<Calendars />} />
       <Route path="admin/la-polla" element={<LaPolla />} />
+      <Route path="admin/wallet" element={<Wallet />} />
       <Route path="LaPolla" element={<LaPollaLayout />} />
       <Route path="register" element={<SignIn />} />
       <Route path="login" element={<SignIn />} />
