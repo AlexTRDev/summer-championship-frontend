@@ -61,18 +61,19 @@ const TablePolla: React.FC<PollaInterface> = ({ jornada }) => {
         <tbody>
           {usersSuccess &&
             dataTickets?.tickets
-              ?.filter(t => t.userId !== 4)
-              .map((ticket, i) => {
+              ?.filter(t => t.id !== 11)
+              .map(ticket => {
                 return {
                   name:
                     usersData?.users?.find(u => u.id === ticket.userId)?.name ??
-                    usersData?.users?.find(user => user?.id === ticket?.userId)?.email,
+                    usersData?.users?.find(u => u.id === ticket.userId)?.email,
                   reventon: ticket.pro ? 'Si' : 'No',
                   aciertos: ticket.calendars?.reduce((acc, calendar) => {
                     if (
                       calendar.Prediction?.result ===
-                      dataTickets.tickets.find(t => t.userId === 4)?.calendars?.find(c => c.id === calendar.id)
-                        ?.Prediction?.result
+                      dataTickets.tickets
+                        .find(t => (calendar.journeyId === 10 ? t.id === 11 : t.id === 18))
+                        ?.calendars?.find(c => c.id === calendar.id)?.Prediction?.result
                     ) {
                       return acc + 1
                     }
@@ -87,7 +88,7 @@ const TablePolla: React.FC<PollaInterface> = ({ jornada }) => {
                   <td className="text-start">{b.name}</td>
                   {/* <td className="text-start">Ver</td> */}
                   <td className="text-start">{b.reventon}</td>
-                  <td className="text-start">{b.aciertos ? b.aciertos + 1 : ''}</td>
+                  <td className="text-start">{b.aciertos ? b.aciertos + 1 : 0}</td>
                 </tr>
               ))}
         </tbody>
