@@ -6,6 +6,7 @@ import { Loader, TablePolla } from '../components'
 import { Ticket } from '../components/Forms/Ticket'
 import { TicketResult } from '../components/Tickets'
 import { IPrediction } from '../types/prediction'
+import corporacion from '../assets/img/corporacion.jpg'
 
 const options = ['L', 'E', 'V']
 
@@ -60,6 +61,15 @@ function LaPollaLayout() {
       <p className="text-gray-500 p-2 font-medium">
         El o las personas que tengan la mayor cantidad de aciertos se haran con el pozo acumulado... 🤑
       </p>
+      <div className="my-2">
+        <h3 className="text-gray-600 text-sm font-semibold">
+          AUSPICIA: <span className="text-indigo-500">Corporación Santos B&R SAC</span>
+        </h3>
+        <figure className="text-gray-500 text-sm">
+          <img src={corporacion} alt="sponsor" className="md:w-96" />
+          <figcaption className="text-center">Reventón de la polla por S/. 500.00 soles</figcaption>
+        </figure>
+      </div>
 
       <div className="text-[10px]">
         <select
