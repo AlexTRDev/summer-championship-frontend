@@ -1,4 +1,4 @@
-import { IResponseWallet, IWallet } from '../../types/wallet'
+import { IRequestWallet, IResponseWallet, IResponseWallets } from '../../types/wallet'
 import { apiSlice } from '../api'
 
 const walletAPI = apiSlice.injectEndpoints({
@@ -26,26 +26,50 @@ const walletAPI = apiSlice.injectEndpoints({
       }),
       providesTags: ['Wallet'],
     }),
-    // getWallets: build.query<IResponseWallets, void>({
-    //   query: () => 'wallets',
-    //   providesTags: ['Wallets'],
-    // }),
+    getWalletByAdmin: build.query<IResponseWallet, IRequestWallet>({
+      query: ({ token, userId }) => ({
+        url: `wallets/admin/${userId}`,
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      }),
+      providesTags: ['Wallet'],
+    }),
+    getWallets: build.query<IResponseWallets, string>({
+      query: token => ({
+        url: `wallets`,
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      }),
+      providesTags: ['Wallets'],
+    }),
     // removeWallet: build.mutation<number, boolean>({
     //   query: id => ({
     //     url: `wallets/${id}`,
     //     method: 'DELETE',
     //   }),
     // }),
-    updateWallet: build.mutation<IResponseWallet, IWallet>({
-      query: body => ({
-        url: `wallets`,
-        method: 'PUT',
-        body,
+    updateWallet: build.mutation<IResponseWallet, IRequestWallet>({
+      query: ({ token, balance, walletId }) => ({
+        url: `wallets/${walletId}`,
+        method: 'PATCH',
+        body: {
+          balance,
+        },
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
       }),
-      invalidatesTags: ['Wallet'],
+      invalidatesTags: ['Wallets'],
     }),
   }),
   overrideExisting: false,
 })
 
-export const { useGetWalletQuery, useUpdateWalletMutation } = walletAPI
+export const { useGetWalletQuery, useUpdateWalletMutation, useGetWalletsQuery } = walletAPI
