@@ -67,7 +67,7 @@ function LaPollaLayout() {
         </h3>
         <figure className="text-gray-500 text-sm">
           <img src={corporacion} alt="sponsor" className="md:w-96" />
-          <figcaption className="text-center">Reventón de la polla por S/. 500.00 soles</figcaption>
+          <figcaption className="text-center sm:w-96">Reventón de la polla por S/. 500.00 soles</figcaption>
         </figure>
       </div>
 
