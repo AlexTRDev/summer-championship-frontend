@@ -13,6 +13,8 @@ export interface IWallet {
 export interface IRequestWallet {
   userId: number
   token: string
+  balance?: number
+  walletId?: number
 }
 
 export interface IResponseWallet extends IResponse {
