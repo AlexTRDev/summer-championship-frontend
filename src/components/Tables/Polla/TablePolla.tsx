@@ -72,7 +72,7 @@ const TablePolla: React.FC<PollaInterface> = ({ jornada }) => {
                     if (
                       calendar.Prediction?.result ===
                       dataTickets.tickets
-                        .find(t => (calendar.journeyId === 10 ? t.id === 11 : t.id === 18))
+                        .find(t => (calendar.journeyId === 10 ? t.id === 11 : t.id === 23))
                         ?.calendars?.find(c => c.id === calendar.id)?.Prediction?.result
                     ) {
                       return acc + 1
@@ -88,7 +88,9 @@ const TablePolla: React.FC<PollaInterface> = ({ jornada }) => {
                   <td className="text-start">{b.name}</td>
                   {/* <td className="text-start">Ver</td> */}
                   <td className="text-start">{b.reventon}</td>
-                  <td className="text-start">{b.aciertos ? b.aciertos + 1 : 0}</td>
+                  <td className="text-start">
+                    {dataTickets.tickets.find(t => t.id === 11) && b.aciertos ? b.aciertos + 1 : b.aciertos}
+                  </td>
                 </tr>
               ))}
         </tbody>
