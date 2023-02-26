@@ -92,7 +92,7 @@ function LaPollaLayout() {
 
         {selectDay !== 10 && selectDay !== 12 && selectDay !== 13 ? (
           <h1 className="text-gray-500 p-2 font-medium">No hubo polla este dia</h1>
-        ) : selectDay === 10 || selectDay === 12 ? (
+        ) : selectDay === 10 || selectDay === 12 || selectDay === 13 ? (
           <h1 className="text-gray-500 p-2 font-medium">Polla {selectDay}</h1>
         ) : (
           <section className="p-2 bg-transparent w-full">
