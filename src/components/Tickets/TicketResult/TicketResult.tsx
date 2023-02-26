@@ -15,7 +15,7 @@ const TicketResult: React.FC<TicketResultInterface> = ({ journeyId, calendars })
   })
 
   useEffect(() => {
-    journeyId === 10 ? setTicketResult(11) : setTicketResult(23)
+    journeyId === 10 ? setTicketResult(11) : journeyId === 12 ? setTicketResult(23) : setTicketResult(41)
   }, [journeyId])
 
   if (isLoading) return <Loader />

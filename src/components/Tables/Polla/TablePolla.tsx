@@ -72,7 +72,13 @@ const TablePolla: React.FC<PollaInterface> = ({ jornada }) => {
                     if (
                       calendar.Prediction?.result ===
                       dataTickets.tickets
-                        .find(t => (calendar.journeyId === 10 ? t.id === 11 : t.id === 23))
+                        .find(t =>
+                          calendar.journeyId === 10
+                            ? t.id === 11
+                            : calendar.journeyId === 12
+                            ? t.id === 23
+                            : t.id === 41
+                        )
                         ?.calendars?.find(c => c.id === calendar.id)?.Prediction?.result
                     ) {
                       return acc + 1
