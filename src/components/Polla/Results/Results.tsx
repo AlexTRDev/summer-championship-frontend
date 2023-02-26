@@ -23,7 +23,7 @@ const Results: React.FC<IPropsResults> = ({ journey }) => {
           key={crypto.randomUUID()}
           number={calendar.number}
           calendarId={calendar?.id as number}
-          ticketId={23}
+          ticketId={41}
           homeTeam={calendar.homeTeam?.name as string}
           awayTeam={calendar.awayTeam?.name as string}
         />

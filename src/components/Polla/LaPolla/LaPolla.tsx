@@ -5,7 +5,7 @@ import { Results } from '../Results'
 export interface LaPollaInterface {}
 
 const LaPolla: React.FC<LaPollaInterface> = () => {
-  const [selectDay, setSelectDay] = useState(12)
+  const [selectDay, setSelectDay] = useState(13)
   const journeysQuery = useGetJourneysQuery()
 
   const handleSelectDay = (e: any) => {
@@ -37,13 +37,11 @@ const LaPolla: React.FC<LaPollaInterface> = () => {
           </option>
         ))}
       </select>
-      {selectDay === 12 ? (
+      {selectDay === 13 ? (
         <div className="w-full flex flex-row flex-wrap bg-slate-200 p-2">
           <Results journey={selectDay} />
         </div>
-      ) : (
-        <p className="p-2 text-md font-bold ">No hubo polla ese dia</p>
-      )}
+      ) : null}
     </div>
   )
 }
