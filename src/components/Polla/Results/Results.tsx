@@ -4,13 +4,14 @@ import { Loader } from '../../Loader'
 import Result from '../Result/Result'
 
 export interface IPropsResults {
-  journey: number
+  journey: string
+  ticketResult: number
 }
 
-const Results: React.FC<IPropsResults> = ({ journey }) => {
+const Results: React.FC<IPropsResults> = ({ journey, ticketResult }) => {
   const { data, isLoading, error } = useGetCalendarsQuery({
     isInclude: 'isInclude=true',
-    journeyId: `journeyId=${journey}`,
+    journeys: `journeys=${journey}`,
   })
 
   if (isLoading) return <Loader />
@@ -23,7 +24,7 @@ const Results: React.FC<IPropsResults> = ({ journey }) => {
           key={crypto.randomUUID()}
           number={calendar.number}
           calendarId={calendar?.id as number}
-          ticketId={41}
+          ticketId={ticketResult}
           homeTeam={calendar.homeTeam?.name as string}
           awayTeam={calendar.awayTeam?.name as string}
         />
