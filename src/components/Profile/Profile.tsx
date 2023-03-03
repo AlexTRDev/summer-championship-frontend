@@ -9,7 +9,7 @@ export interface ProfileInterface {}
 const Profile: React.FC<ProfileInterface> = () => {
   const user = useAppSelector(selectUser)
   const { data, isLoading, isError } = useGetTicketsQuery({
-    journeyId: `journeyId=${10}`,
+    journeys: `journeys=${'17,18'}`,
   })
 
   const { data: teamsData, isLoading: teamsLoading } = useGetTeamsQuery()
