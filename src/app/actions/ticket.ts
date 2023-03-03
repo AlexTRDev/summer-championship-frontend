@@ -15,7 +15,7 @@ const ticketAPI = apiSlice.injectEndpoints({
       query: id => `tickets/${id}`,
     }),
     getTickets: build.query<IResponseTickets, IQueriesTicket>({
-      query: queries => `tickets?${queries.journeyId}`,
+      query: queries => `tickets?${queries.journeys}`,
       providesTags: ['Tickets'],
     }),
     removeTicket: build.mutation<number, boolean>({

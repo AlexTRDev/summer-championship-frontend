@@ -20,7 +20,7 @@ const Ticket: React.FC<TicketInterface> = ({ predictions, calendars }) => {
 
   const [toggle, setToggle] = useState(false)
   const [ticket, setTicket] = useState<ITicket>({
-    price: 5,
+    price: 10,
     pro: false,
   })
   const [showAlert, setShowAlert] = useState(false)
@@ -64,18 +64,20 @@ const Ticket: React.FC<TicketInterface> = ({ predictions, calendars }) => {
 
         <p className="">Resultado</p>
       </div>
-      {predictions.map(p => (
-        <div key={crypto.randomUUID()} className={'flex text-[8px] items-center justify-between gap-2 px-1'}>
-          <p>
-            {calendars.find(c => c?.id === p.calendarId)?.number} -{' '}
-            <span>
-              {calendars.find(c => c?.id === p.calendarId)?.homeTeam?.name} -{' '}
-              {calendars.find(c => c?.id === p.calendarId)?.awayTeam?.name}
-            </span>
-          </p>
-          <span>{p.result}</span>
-        </div>
-      ))}
+      {predictions
+        .sort((a, b) => a.calendarId - b.calendarId)
+        .map((p, i) => (
+          <div key={crypto.randomUUID()} className={'flex text-[8px] items-center justify-between gap-2 px-1'}>
+            <p>
+              {calendars.find(c => c?.id === p.calendarId)?.number} -{' '}
+              <span>
+                {calendars.find(c => c?.id === p.calendarId)?.homeTeam?.name} -{' '}
+                {calendars.find(c => c?.id === p.calendarId)?.awayTeam?.name}
+              </span>
+            </p>
+            <span>{p.result}</span>
+          </div>
+        ))}
 
       {predictions.some(p => p.result === '') ? (
         <p className="text-rose-600 p-2">Faltan datos: No puedes generar tu ticket</p>

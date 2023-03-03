@@ -14,7 +14,7 @@ const calendarAPI = apiSlice.injectEndpoints({
       invalidatesTags: ['Calendars'],
     }),
     getCalendars: build.query<IResponseCalendars, IQueriesCalendar>({
-      query: queries => `calendars?${queries.journeyId}&${queries.isInclude}`,
+      query: queries => `calendars?${queries.journeys}&${queries.isInclude}`,
       providesTags: ['Calendars'],
     }),
     getCalendar: build.query<ICalendar, number>({

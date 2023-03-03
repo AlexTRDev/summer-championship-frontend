@@ -6,7 +6,7 @@ import { Loader } from '../components'
 
 function CalendarLayout() {
   const [admin, setAdmin] = useState(false)
-  const [selectDay, setSelectDay] = useState(1)
+  const [selectDay, setSelectDay] = useState('17')
 
   const location = useLocation()
 
@@ -16,14 +16,14 @@ function CalendarLayout() {
     error: calendarError,
   } = useGetCalendarsQuery({
     isInclude: 'isInclude=true',
-    journeyId: `journeyId=${selectDay}`,
+    journeys: `journeys=${selectDay}`,
   })
   const { data: dataJourneys, isLoading: dayLoading, error: dayError } = useGetJourneysQuery()
   const [deleteCalendar, { isLoading: deleteLoading }] = useRemoveCalendarMutation()
 
   const handleSelectDay = (e: any) => {
     e.preventDefault()
-    setSelectDay(Number(e.target.value))
+    setSelectDay(e.target.value)
   }
 
   const handleDelete = async (id: number) => {
@@ -58,9 +58,9 @@ function CalendarLayout() {
                   {' '}
                   Seleccionar Jornada
                 </option>
-                {dataJourneys?.journeys?.map(jouney => (
-                  <option key={crypto.randomUUID()} value={jouney.id}>
-                    Jornada {jouney.id}: {jouney.date}
+                {dataJourneys?.journeys?.map((journey, i) => (
+                  <option key={crypto.randomUUID()} value={journey.id}>
+                    {`Octavos ${i + 1}:  ${journey.date}`}
                   </option>
                 ))}
               </select>

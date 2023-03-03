@@ -4,7 +4,7 @@ import { IPrediction } from '../../../types/prediction'
 import { Loader } from '../../Loader'
 
 export interface PollaInterface {
-  jornada: number
+  jornada: string
 }
 
 const headers = ['Pos', 'Nombre', 'Reventon', 'Aciertos']
@@ -16,7 +16,7 @@ const TablePolla: React.FC<PollaInterface> = ({ jornada }) => {
     isError,
     isSuccess: ticketsSuccess,
   } = useGetTicketsQuery({
-    journeyId: `journeyId=${jornada}`,
+    journeys: `journeys=${jornada}`,
   })
   const { data: usersData, isSuccess: usersSuccess } = useGetUsersQuery()
 
@@ -47,7 +47,6 @@ const TablePolla: React.FC<PollaInterface> = ({ jornada }) => {
           {dataTickets?.tickets.length ? dataTickets?.tickets.length - 1 : 0}
         </span>
       </h1>
-      <h3 className="text-gray-600 text-xs">Polla Nº{jornada}</h3>
       <table className="table-auto w-full">
         <thead>
           <tr className="text-gray-500 border-b text-[10px] sm:text-base">
@@ -71,15 +70,8 @@ const TablePolla: React.FC<PollaInterface> = ({ jornada }) => {
                   aciertos: ticket.calendars?.reduce((acc, calendar) => {
                     if (
                       calendar.Prediction?.result ===
-                      dataTickets.tickets
-                        .find(t =>
-                          calendar.journeyId === 10
-                            ? t.id === 11
-                            : calendar.journeyId === 12
-                            ? t.id === 23
-                            : t.id === 41
-                        )
-                        ?.calendars?.find(c => c.id === calendar.id)?.Prediction?.result
+                      dataTickets.tickets.find(t => t.id === 54)?.calendars?.find(c => c.id === calendar.id)?.Prediction
+                        ?.result
                     ) {
                       return acc + 1
                     }
