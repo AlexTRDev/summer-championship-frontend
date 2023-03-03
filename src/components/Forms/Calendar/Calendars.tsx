@@ -12,7 +12,7 @@ const initialState: ICalendar = {
   awayScore: 0,
   homeTeamId: 0,
   awayTeamId: 0,
-  journeyId: 1,
+  journeyId: 17,
 }
 
 const Match: React.FC<MatchInterface> = () => {
@@ -65,9 +65,9 @@ const Match: React.FC<MatchInterface> = () => {
             {' '}
             Seleccionar Jornada
           </option>
-          {dataJourneys?.journeys?.map(jouney => (
-            <option key={crypto.randomUUID()} value={jouney.id}>
-              Jornada {jouney.id}: {jouney.date}
+          {dataJourneys?.journeys?.map((journey, i) => (
+            <option key={crypto.randomUUID()} value={journey.id}>
+              {`Octavos ${i + 1}:  ${journey.date}`}
             </option>
           ))}
         </select>
@@ -76,7 +76,7 @@ const Match: React.FC<MatchInterface> = () => {
             <option value={0} disabled>
               Número de partido
             </option>
-            {Array.from({ length: 20 }, (v, i) => i + 1).map(i => (
+            {Array.from({ length: 16 }, (v, i) => i + 1).map(i => (
               <option key={crypto.randomUUID()} value={i}>
                 {i}
               </option>
