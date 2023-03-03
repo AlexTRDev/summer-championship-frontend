@@ -1,22 +1,18 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useGetTicketsQuery } from '../../../app/actions'
 import { ICalendar } from '../../../types/calendar'
 import { Loader } from '../../Loader'
 export interface TicketResultInterface {
-  journeyId: number
+  journeys: string
   calendars: ICalendar[]
 }
 
-const TicketResult: React.FC<TicketResultInterface> = ({ journeyId, calendars }) => {
-  const [ticketResult, setTicketResult] = useState(0)
+const TicketResult: React.FC<TicketResultInterface> = ({ journeys, calendars }) => {
+  const [ticketResult, _setTicketResult] = useState(54)
 
   const { data, isLoading, error } = useGetTicketsQuery({
-    journeyId: `journeyId=${journeyId}`,
+    journeys: `journeys=${journeys}`,
   })
-
-  useEffect(() => {
-    journeyId === 10 ? setTicketResult(11) : journeyId === 12 ? setTicketResult(23) : setTicketResult(41)
-  }, [journeyId])
 
   if (isLoading) return <Loader />
   if (error) return <h1 className="text-gray-500 text-xl font-medium">... Error en la petición ...</h1>
@@ -41,7 +37,7 @@ const TicketResult: React.FC<TicketResultInterface> = ({ journeyId, calendars })
                     ?.result === 'E'
                 ? 'Empate'
                 : data?.tickets.find(t => t.id === ticketResult)?.calendars?.find(c => c.id === calendar.id)?.Prediction
-                    ?.result === 'D' && journeyId === 10
+                    ?.result === 'D' && journeys === '10'
                 ? 'Se les sumo a todos 1 acierto'
                 : 'Por Definir'}
             </p>
