@@ -11,7 +11,7 @@ export interface IQueriesPlayerStats extends IQueries {
 }
 
 export interface IQueriesCalendar extends IQueries {
-  journeyId?: string
+  journeys?: string
 }
 export interface IQueriesUser extends IQueries {
   transactionId?: string
