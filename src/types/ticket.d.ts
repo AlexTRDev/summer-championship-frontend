@@ -20,5 +20,5 @@ export interface IResponseTickets extends IResponse {
 }
 
 export interface IQueriesTicket extends IQueries {
-  journeyId?: string
+  journeys?: string
 }
